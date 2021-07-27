@@ -16,13 +16,23 @@ class Destinasi extends Model
     	return DB::table('destinasis')->get();
     }
 
-    public function detailData($id_destinasi){
+    public function allDatas($id_destinasi){
     	return DB::table('destinasis')->where('id_destinasi', $id_destinasi)->get();
+    }
+
+    public function detailDatas($id_destinasi){
+        return DB::table('destinasis')->where('id_destinasi', $id_destinasi)->first();
     }
 
     public function editData($id_destinasi, $data){
     	DB::table('destinasis')
     	->where('id_destinasi', $id_destinasi)
     	->update($data);
+    }
+
+    public function editDatas($id_destinasi, $datas){
+        DB::table('destinasis')
+        ->where('id_destinasi', $id_destinasi)
+        ->update($datas);
     }
 }

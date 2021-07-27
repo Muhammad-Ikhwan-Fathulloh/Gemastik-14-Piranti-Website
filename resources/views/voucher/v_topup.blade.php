@@ -19,6 +19,9 @@
       <div class="form-group">
             <button class="btn btn-success btn-sm">Top Up</button>
           </div>
+          <div class="form-group">
+            <strong class="text-white">Saldo Saya : Rp.{{ number_format(Auth::user()->saldo) }},-</strong>
+          </div>
           </form>
            <hr>
       <div class="row">

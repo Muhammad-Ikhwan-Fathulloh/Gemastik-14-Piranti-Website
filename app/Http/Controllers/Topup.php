@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Voucher;
 use Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class Topup extends Controller
 {
@@ -16,14 +17,20 @@ class Topup extends Controller
 
 	public function UbahSaldo(Request $request){
 		$Vouchers = $this->Voucher->detailData($request->uids);
-    	$id = Auth::user()->id;
-    	$data = [
-    		'saldo' => Auth::user()->saldo + $Vouchers->nominal,
-    	];
+        if (!empty($Vouchers->id_voucher)) {
+            $id = Auth::user()->id;
+            $data = [
+                'saldo' => Auth::user()->saldo + $Vouchers->nominal,
+            ];
 
-    	$this->User->editData($id, $data);
-    	$this->Voucher->deleteData($Vouchers->id);
-
-    	return redirect()->route('topup');
+            $this->User->editData($id, $data);
+            $this->Voucher->deleteData($Vouchers->id);
+            alert()->success('Berhasil','Menambahkan Saldo');
+            return redirect()->route('topup');
+        }else{
+            alert()->error('Gagal','Masukkan Kode Voucher');
+            return redirect()->route('topup');
+        }
+    	
     }
 }

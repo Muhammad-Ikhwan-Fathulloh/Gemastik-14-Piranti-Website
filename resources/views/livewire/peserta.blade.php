@@ -1,13 +1,10 @@
 <div>
     {{-- Knowing others is intelligence; knowing yourself is true wisdom. --}}
-    <div wire:poll.1000ms>
-        <h5 class="text-white btn btn-info"><strong>{{ now() }}</strong></h5>
-    </div>
     <div class="card border-light mb-3 bg-ku">
 	  <div class="card-body">
 	  	<div>
       <form class="d-flex" wire:poll>
-          <input wire:model="search" class="form-control me-2 border-light" type="text" name="search" placeholder="Cari berdasarkan UID" aria-label="Search" value="">
+          <input wire:model="search" class="form-control me-2 border-light" type="text" name="search" placeholder="Cari berdasarkan Nama" aria-label="Search" value="">
           <span class="btn btn-outline-light" value="cari"><i class="fas fa-fw fa-search"></i></span>
         </form>
     </div>
@@ -80,16 +77,20 @@
 					<td>
 						<div class="form-check form-switch" align="right">
 						  @if($datas->status == 0)
-						  <input class="form-check-input border-info" type="checkbox" name="model" id="mode1" wire:click="">
+						  <input class="form-check-input border-info" type="checkbox" name="model" id="mode1" wire:click.prevent="statusku({{ $datas->id }})">
 						  <!-- <label class="form-check-label text-white" for="model"><strong>Mode Presensi</strong> <strong class="text-info">OFF</strong></label> -->
 						  @elseif($datas->status == 1)
-						  <input class="form-check-input border-info" type="checkbox" name="model" id="mode1" wire:click="" checked>
+						  <input class="form-check-input border-info" type="checkbox" name="model" id="mode1" wire:click.prevent="statusku({{ $datas->id }})" checked>
 						  <!-- <label class="form-check-label text-white" for="model"><strong>Mode Presensi</strong> <strong class="text-info">ON</strong></label> -->
 						  @endif
 						</div>
 					</td>
 					<td>
+						@if($datas->level == 1)
+						<span>Admin</span>
+						@else
 						<button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delete{{ $datas->id }}"><i class="fas fa-fw fa-trash"></i> <strong>Hapus</strong></button>
+						@endif
 					</td>
 				</tr>
 			@endforeach
@@ -98,7 +99,8 @@
 		</tbody>
 	</table>
 	  </div>
-
+	  <hr>
+	  {{ $users->links() }}
 	  </div>
 	</div>
 

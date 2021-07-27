@@ -4,15 +4,26 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Fitur;
+use Livewire\WithPagination;
 
 class Fiturs extends Component
 {
+    use WithPagination;
+    protected $paginationTheme = 'bootstrap';
+
 	public $judul;
 	public $gambar;
 	public $fitur;
 	public $keterangan;
 
 	public $ids;
+
+    public $search;
+
+    public function updatingSearch()
+    {
+        $this->resetPage();
+    }
 
 	public function clearform(){
         $this->judul = '';
@@ -84,7 +95,7 @@ class Fiturs extends Component
     public function render()
     {
         return view('livewire.fiturs', [
-        	'fiturs' => Fitur::get(),
+        	'fiturs' => Fitur::where('judul', 'like', '%'.$this->search.'%')->orderBy('id','DESC')->paginate(5),
         ])->layout('fitur.v_fitur');
     }
 }

@@ -1,9 +1,6 @@
-<div>
+<div wire:poll>
     {{-- Be like water. --}}
-    <div wire:poll.1000ms>
-        <h5 class="text-white btn btn-info"><strong>{{ now() }}</strong></h5>
-    </div>
-    <hr>
+  
     <div class="card bg-gradient-dark">
       <div class="card-body">
         <h5 class="text-white"><strong>Halo, {{ Auth::user()->name }}</strong></h5>
@@ -30,12 +27,12 @@
 
             <!-- card -->
             <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-success shadow h-100 py-2">
-                <div class="card-body">
+              <div class="card border-left-light shadow h-100">
+                <div class="card-body bg-gradient-dark">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Pengguna</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $user }}</div>
+                      <a href="/peserta" class="h5 mb-0 font-weight-bold text-white btn btn-success">{{ $user }}</a>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-user fa-2x text-gray-300"></i>
@@ -47,12 +44,12 @@
 
             <!-- card -->
             <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
+              <div class="card border-left-light shadow h-100">
+                <div class="card-body bg-gradient-dark">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Destinasi</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $destinasi }}</div>
+                      <a href="/destinasik" class="h5 mb-0 font-weight-bold text-white btn btn-primary">{{ $destinasi }}</a>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-map fa-2x text-gray-300"></i>
@@ -64,12 +61,12 @@
 
             <!-- card -->
             <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-warning shadow h-100 py-2">
-                <div class="card-body">
+              <div class="card border-left-light shadow h-100">
+                <div class="card-body bg-gradient-dark">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Transaksi</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $transaksis }}</div>
+                      <a href="/transaksi" class="h5 mb-0 font-weight-bold text-white btn btn-warning">{{ $transaksi_master }}</a>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -86,12 +83,13 @@
 
             <!-- card -->
             <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-success shadow h-100 py-2">
-                <div class="card-body">
+              <div class="card border-left-light shadow h-100">
+                <div class="card-body bg-gradient-dark">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Pengguna</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $user }}</div>
+                      <div class="text-xs font-weight-bold text-white text-uppercase mb-1">Pengguna</div>
+                      <!-- <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $user }}</div> -->
+                      <a href="/" class="h5 mb-0 font-weight-bold text-white btn btn-success">{{ $user }}</a>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-user fa-2x text-gray-300"></i>
@@ -103,12 +101,13 @@
 
             <!-- card -->
             <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
+              <div class="card border-left-light shadow h-100">
+                <div class="card-body bg-gradient-dark">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Destinasi</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $destinasis }}</div>
+                      <div class="text-xs font-weight-bold text-white text-uppercase mb-1">Destinasi yang Dikelola</div>
+                      <!-- <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $destinasis }}</div> -->
+                      <a href="/destinasik" class="h5 mb-0 font-weight-bold text-white btn btn-primary">{{ $destinasis }}</a>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-map fa-2x text-gray-300"></i>
@@ -120,12 +119,13 @@
 
             <!-- card -->
             <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-warning shadow h-100 py-2">
-                <div class="card-body">
+              <div class="card border-left-light shadow h-100">
+                <div class="card-body bg-gradient-dark">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Transaksi</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $transaksis }}</div>
+                      <div class="text-xs font-weight-bold text-white text-uppercase mb-1">Transaksi</div>
+                      <!-- <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $transaksi_destinasi }}</div> -->
+                      <a href="/transaksi" class="h5 mb-0 font-weight-bold text-white btn btn-warning">{{ $transaksi_destinasi }}</a>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -134,6 +134,25 @@
                 </div>
               </div>
             </div>
+
+            <!-- card -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-light shadow h-100">
+                <div class="card-body bg-gradient-dark">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-white text-uppercase mb-1">Pendapatan Destinasi</div>
+                      <!-- <div class="h5 mb-0 font-weight-bold text-gray-800">Rp.{{ number_format($pendapatan) }},-</div> -->
+                      <a href="/pengunjung" class="h5 mb-0 font-weight-bold text-white btn btn-info">Rp.{{ number_format($pendapatan) }},-</a>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
 
 
         </div>      
@@ -188,6 +207,24 @@
                       <div class="text-xs font-weight-bold text-light text-uppercase mb-1">Transaksi Belum Terpakai</div>
                       <!-- <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $transaksi }}</div> -->
                       <a href="/transaksi" class="h5 mb-0 font-weight-bold text-white btn btn-warning">{{ $transaksi }}</a>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-list fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- card -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-light shadow h-100">
+                <div class="card-body bg-gradient-dark">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-light text-uppercase mb-1">Transaksi Ditunda</div>
+                      <!-- <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $transaksi }}</div> -->
+                      <a href="/transaksi" class="h5 mb-0 font-weight-bold text-white btn btn-danger">{{ $transaksik }}</a>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-list fa-2x text-gray-300"></i>

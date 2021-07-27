@@ -53,7 +53,7 @@ class Profile extends Component
     	$this->tanggal_lahir = $detailUser->tanggal_lahir;
     	$this->alamat = $detailUser->alamat;
     	$this->nohp = $detailUser->nohp;
-        $this->saldo = $detailUser->saldo;
+        $this->saldo = "Rp.".number_format($detailUser->saldo).",-";
     	$this->latitude_user = $detailUser->latitude_user;
     	$this->longitude_user = $detailUser->longitude_user;
 
@@ -74,6 +74,17 @@ class Profile extends Component
             'latitude_user' => $this->latitude_users,
             'longitude_user' => $this->longitude_users,
 		]);
+
+        $this->alert('success', 'Berhasil Ubah Profile!', [
+                  'position' =>  'center', 
+                  'timer' =>  3000,  
+                  'toast' =>  true, 
+                  'text' =>  '', 
+                  'confirmButtonText' =>  'Ok', 
+                  'cancelButtonText' =>  'Cancel', 
+                  'showCancelButton' =>  false, 
+                  'showConfirmButton' =>  false, 
+            ]);
 	}
 
     public function DetailData(){

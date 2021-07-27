@@ -19,6 +19,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'username',
         'email',
         'password',
     ];
@@ -52,11 +53,19 @@ class User extends Authenticatable
         return DB::table('users')->get();
     }
 
-    public function allDatas($uid){
+    public function allDatas($id){
+        return DB::table('users')->where('id', $id)->get();
+    }
+
+    public function allDatax($uid){
         return DB::table('users')->where('uid', $uid)->get();
     }
 
-    public function detailData($uid){
+    public function detailData($id){
+        return DB::table('users')->where('id', $id)->first();
+    }
+
+    public function detailDatas($uid){
         return DB::table('users')->where('uid', $uid)->first();
     }
 
@@ -64,15 +73,21 @@ class User extends Authenticatable
         DB::table('users')->insert($data);
     }
 
-    public function editDatas($uid, $data){
+    public function editDatas($id, $data){
         DB::table('users')
-        ->where('uid', $uid)
+        ->where('id', $id)
         ->update($data);
     }
 
-    public function deleteData($uid){
+    public function editDatax($id, $datax){
         DB::table('users')
-        ->where('uid', $uid)
+        ->where('id', $id)
+        ->update($datax);
+    }
+
+    public function deleteData($id){
+        DB::table('users')
+        ->where('id', $id)
         ->delete();
     }
 }

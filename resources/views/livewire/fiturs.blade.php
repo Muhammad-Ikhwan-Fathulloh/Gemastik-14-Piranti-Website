@@ -5,6 +5,8 @@
 	  	<button type="button" class="btn btn-light" data-toggle="modal" data-target="#addfitur" wire:click.prevent="clearform()"><i class="fas fa-fw fa-plus-circle"></i>
 		  <strong>Tambah Data Fitur</strong>
 		</button>
+    <br>
+    <br>
     <div>
       <form class="d-flex" wire:poll>
           <input wire:model="search" class="form-control me-2 border-light" type="text" name="search" placeholder="Cari berdasarkan Judul Fitur" aria-label="Search" value="">
@@ -55,7 +57,7 @@
 		</tbody>
 	</table>
 	  </div>
-
+    {{ $fiturs->links() }}
 	  </div>
 	</div>
 

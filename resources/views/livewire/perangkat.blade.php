@@ -6,6 +6,7 @@
 		  <strong>Tambah Data Perangkat</strong>
 		</button>
 		<div>
+			<br>
       <form class="d-flex" wire:poll>
           <input wire:model="search" class="form-control me-2 border-light" type="text" name="search" placeholder="Cari berdasarkan ID Perangkat" aria-label="Search" value="">
           <span class="btn btn-outline-light" value="cari"><i class="fas fa-fw fa-search"></i></span>
@@ -68,7 +69,7 @@
 		</tbody>
 	</table>
 	  </div>
-
+	  {{ $perangkat->links() }}
 	  </div>
 	</div>
 

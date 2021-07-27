@@ -27,6 +27,8 @@ class Handler extends ExceptionHandler
         'password_confirmation',
     ];
 
+    
+
     /**
      * Register the exception handling callbacks for the application.
      *
@@ -37,5 +39,6 @@ class Handler extends ExceptionHandler
         $this->reportable(function (Throwable $e) {
             //
         });
+
     }
 }

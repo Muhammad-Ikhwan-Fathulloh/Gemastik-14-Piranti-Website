@@ -5,7 +5,7 @@
 	  <div class="card-body">
 	  	
 	  	<!--  -->
-	  	<form wire:submit.prevent="SimpanData()" wire:poll>
+	  	<form wire:submit.prevent="SimpanData()">
 		@if (session('pesan'))
 			<div class="alert alert-success">
 				{{session('pesan')}}
@@ -20,20 +20,20 @@
 			  </div>
 			  <div class="form-group">
 			    <label class="text-white" for="">Nama Panggilan</label>
-			    <input type="text" name="username" wire:model="username" class="form-control" placeholder="Masukkan Nama Panggilan">
+			    <input type="text" name="username" wire:model="username" class="form-control" placeholder="Masukkan Nama Panggilan" readonly="">
 			    @error('username') <div class="alert alert-danger">{{ $message }}</div> @enderror
 			  </div>
 
 
 			  <div class="form-group">
 			    <label class="text-white" for="">Foto</label>
-			    <input type="text" name="foto" wire:model="foto" class="form-control" placeholder="Upload Foto">
+			    <input type="text" name="foto" wire:model="foto" class="form-control" placeholder="Upload Foto" readonly="">
 			    @error('foto') <div class="alert alert-danger">{{ $message }}</div> @enderror
 			  </div>
 
 			  <div class="form-group">
 			    <label class="text-white" for="">UID Kartu</label>
-			    <input type="text" name="uid" wire:model="uid" class="form-control" placeholder="Scan UID Kartu" >
+			    <input type="text" name="uid" wire:model="uid" class="form-control" placeholder="Scan UID Kartu" readonly="">
 			    @error('uid') <div class="alert alert-danger">{{ $message }}</div> @enderror
 			  </div>
 
@@ -43,11 +43,11 @@
 			    @error('email') <div class="alert alert-danger">{{ $message }}</div> @enderror
 			  </div>
 
-			  <div class="form-group">
+			  <!-- <div class="form-group">
 			    <label class="text-white" for="">Password</label>
 			    <input type="text" name="password" wire:model="password" class="form-control" placeholder="Masukkan Password" readonly="">
 			    @error('password') <div class="alert alert-danger">{{ $message }}</div> @enderror
-			  </div>
+			  </div> -->
 
 			  <div class="form-group">
 			    <label class="text-white" for="">Saldo</label>
@@ -57,37 +57,37 @@
 
 			  <div class="form-group">
 			    <label class="text-white" for="">Tempat Lahir</label>
-			    <input type="text" name="tempat_lahir" wire:model="tempat_lahir" class="form-control" placeholder="Masukkan Tempat Lahir">
+			    <input type="text" name="tempat_lahir" wire:model="tempat_lahir" class="form-control" placeholder="Masukkan Tempat Lahir" readonly="">
 			    @error('tempat_lahir') <div class="alert alert-danger">{{ $message }}</div> @enderror
 			  </div>
 
 			  <div class="form-group">
 			    <label class="text-white" for="">Tanggal Lahir</label>
-			    <input type="date" name="tanggal_lahir" wire:model="tanggal_lahir" class="form-control" placeholder="Masukkan Tanggal Lahir">
+			    <input type="date" name="tanggal_lahir" wire:model="tanggal_lahir" class="form-control" placeholder="Masukkan Tanggal Lahir" readonly="">
 			    @error('tanggal_lahir') <div class="alert alert-danger">{{ $message }}</div> @enderror
 			  </div>
 
 			  <div class="form-group">
 			    <label class="text-white" for="">Alamat</label>
-			    <input type="text" name="alamat" wire:model="alamat" class="form-control" placeholder="Masukkan Alamat">
+			    <input type="text" name="alamat" wire:model="alamat" class="form-control" placeholder="Masukkan Alamat" readonly="">
 			    @error('alamat') <div class="alert alert-danger">{{ $message }}</div> @enderror
 			  </div>
 
 			  <div class="form-group">
 			    <label class="text-white" for="">No Handphone</label>
-			    <input type="text" name="nohp" wire:model="nohp" class="form-control" placeholder="Masukkan No Handphone">
+			    <input type="text" name="nohp" wire:model="nohp" class="form-control" placeholder="Masukkan No Handphone" readonly="">
 			    @error('nohp') <div class="alert alert-danger">{{ $message }}</div> @enderror
 			  </div>
 
 			  <div class="form-group">
 			    <label class="text-white" for="">Latitude</label>
-			    <input type="text" name="latitude_user" wire:model="latitude_user" class="form-control" placeholder="Masukkan Latitude">
+			    <input type="text" name="latitude_user" wire:model="latitude_user" class="form-control" placeholder="Masukkan Latitude" readonly="">
 			    @error('latitude_user') <div class="alert alert-danger">{{ $message }}</div> @enderror
 			  </div>
 
 			  <div class="form-group">
 			    <label class="text-white" for="">Longitude</label>
-			    <input type="text" name="longitude_user" wire:model="longitude_user" class="form-control" placeholder="Masukkan Longitude">
+			    <input type="text" name="longitude_user" wire:model="longitude_user" class="form-control" placeholder="Masukkan Longitude" readonly="">
 			    @error('longitude_user') <div class="alert alert-danger">{{ $message }}</div> @enderror
 			  </div>
 			  
@@ -106,7 +106,7 @@
     	
     	
       <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel"><i class="fas fa-fw fa-user"></i> Ubah Profile</h5>
+        <h5 class="modal-title" id="staticBackdropLabel"><i class="fas fa-fw fa-user"></i> Profile</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -210,7 +210,7 @@
       });
       Instascan.Camera.getCameras().then(function (camerak) {
         if (camerak.length > 0) {
-          scanners.start(camerak[0]);
+          scanners.start(camerak[1]);
         } else {
           console.error('No cameras found.');
         }

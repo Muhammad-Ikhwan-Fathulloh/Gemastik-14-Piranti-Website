@@ -4,13 +4,24 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Alat;
+use Livewire\WithPagination;
 
 class Perangkat extends Component
 {
+    use WithPagination;
+    protected $paginationTheme = 'bootstrap';
+
 	public $id_alat;
 	public $status;
 
 	public $ids;
+
+    public $search;
+
+    public function updatingSearch()
+    {
+        $this->resetPage();
+    }
 
 	public function clearform(){
         $this->id_alat = '';
@@ -59,7 +70,7 @@ class Perangkat extends Component
     public function render()
     {
         return view('livewire.perangkat', [
-        	'perangkat' => Alat::orderBy('id','DESC')->get(),
+        	'perangkat' => Alat::where('id_alat', 'like', '%'.$this->search.'%')->orderBy('id','DESC')->paginate(5),
         ])->layout('perangkat.v_perangkat');
     }
 }

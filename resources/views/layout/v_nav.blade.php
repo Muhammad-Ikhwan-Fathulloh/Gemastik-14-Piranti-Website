@@ -60,6 +60,11 @@
           <i class="fas fa-fw fa-map"></i>
           <span>Destinasi</span></a>
       </li>
+      <li class="nav-item {{request()->is('pengunjung')?'active':''}}">
+        <a class="nav-link" href="/pengunjung">
+          <i class="fas fa-fw fa-users"></i>
+          <span>Data Kunjungan Destinasi</span></a>
+      </li>
 
       <li class="nav-item {{request()->is('kategori')?'active':''}}">
         <a class="nav-link" href="/kategori">
@@ -84,6 +89,12 @@
         <a class="nav-link" href="/fitur">
           <i class="fas fa-fw fa-archive"></i>
           <span>Fitur</span></a>
+      </li>
+
+      <li class="nav-item {{request()->is('cuaca')?'active':''}}">
+        <a class="nav-link" href="/cuaca">
+          <i class="fas fa-fw fa-cloud"></i>
+          <span>Cuaca</span></a>
       </li>
 
       <!-- Nav Item - Utilities Collapse Menu -->
@@ -112,6 +123,16 @@
         <a class="nav-link" href="/destinasik">
           <i class="fas fa-fw fa-map"></i>
           <span>Data Destinasi</span></a>
+      </li>
+      <li class="nav-item {{request()->is('pengunjung')?'active':''}}">
+        <a class="nav-link" href="/pengunjung">
+          <i class="fas fa-fw fa-users"></i>
+          <span>Data Kunjungan Destinasi</span></a>
+      </li>
+      <li class="nav-item {{request()->is('cuaca')?'active':''}}">
+        <a class="nav-link" href="/cuaca">
+          <i class="fas fa-fw fa-cloud"></i>
+          <span>Cuaca Destinasi</span></a>
       </li>
 
       <!-- Nav Item - Utilities Collapse Menu -->
@@ -156,8 +177,8 @@
         </a>
         <div id="collapseUtilities2" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="/transaksi"><strong>Riwayat Transaksi</strong></a>  
-            <a class="collapse-item" href="/transaksi"><strong>Laporan Transaksi</strong></a>
+            <a class="collapse-item" href="/transaksi"><strong>Riwayat Transaksi</strong></a> 
+            <a class="collapse-item" href="/detailtransaksi"><strong>Status Transaksi</strong></a>  
           </div>
         </div>
       </li>

@@ -1,8 +1,5 @@
 <div>
     {{-- If your happiness depends on money, you will never be happy with yourself. --}}
-     <div wire:poll.1000ms>
-        <h5 class="text-white btn btn-info"><strong>{{ now() }}</strong></h5>
-    </div>
     <div class="card border-light mb-3 bg-ku">
 	  <div class="card-body">
 	  	<button type="button" class="btn btn-light" data-toggle="modal" data-target="#addvoucher" wire:click.prevent="clearform()"><i class="fas fa-fw fa-plus-circle"></i>
@@ -74,7 +71,7 @@
 		</tbody>
 	</table>
 	  </div>
-
+    {{ $vouchers->links() }}
 	  </div>
 	</div>
 

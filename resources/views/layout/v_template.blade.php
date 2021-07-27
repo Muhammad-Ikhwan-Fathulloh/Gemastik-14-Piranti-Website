@@ -12,6 +12,7 @@
 
   <title>@yield('title') | Skut Bandung</title>
   <link rel="shortcut icon" type="image/png" href="logo/skut_bandung.png">
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
   <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
   <!-- Custom fonts for this template-->
@@ -20,6 +21,7 @@
   <!-- qrcode -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
   <!-- API GIS -->
   <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
@@ -136,7 +138,9 @@
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-white small"><i class="fas fa-fw fa-user"></i> <strong>{{ Auth::user()->name }}</strong></span>
-                <!-- <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60"> -->
+                @if(!empty(auth()->user()->foto))
+                <img class="img-profile rounded-circle" src="{{ Auth::user()->foto }}">
+                @endif
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -185,6 +189,7 @@
           </div>
             <!-- Main content -->
             <section class="content">
+              
 
               @yield('content')
               
@@ -193,6 +198,7 @@
           </div>
           <!-- /.content-wrapper -->
           <!-- Footer -->
+          @include('sweetalert::alert')
       @livewireScripts
       <!-- End of Footer -->
       <!-- </div>
@@ -224,7 +230,8 @@
           </button>
         </div>
          <form id="logout-form" action="{{ route('logout') }}" method="POST">
-          @csrf
+          <!-- @csrf -->
+          {{ csrf_field() }}
         <div class="modal-body">Pilih "Logout" jika yakin mau keluar.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
@@ -270,9 +277,11 @@
     crossorigin=""></script>
 
 <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
+<script src="https://cdn.jsdelivr.net/gh/npm/apexcharts"></script>
+
 @stack('scripts')
 <!-- @stack('scriptk') -->
-
+<x-livewire-alert::scripts />
 </body>
 
 </html>

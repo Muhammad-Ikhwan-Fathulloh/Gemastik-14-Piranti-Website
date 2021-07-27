@@ -79,6 +79,7 @@
       <div class="row">
         <div class="col-sm-8 col-md-7 py-4">
           <h4 class="text-white">About</h4>
+
           <p class="text-white">Melihat potensi pariwisata di era perkembangan zaman yang semakin masif. Diperlukan sebuah sistem yang dapat meningkatkannya menjadi lebih sederhana. Kami dari tim Nocturnailed menghadirkan Skut Bandung, sebuah Aplikasi Penyedia Informasi Kepariwisataan Kota Bandung berbasis Internet of Things.</p>
         </div>
         <div class="col-sm-4 offset-md-1 py-4">
@@ -133,11 +134,11 @@
 <div class="bg-kuk">
   <section>
     <div class="container">
-  <div class="row">
-    <div class="col-sm-5 col-md-6 text-center">
+  <div class="row row-cols-1 row-cols-md-2 g-4">
+    <div class="col text-center">
       <img src="{{ url('logo/logo.png') }}" width="400px">
     </div>
-    <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0 text-center">
+    <div class="col text-center">
       
       <strong class="text-white">Skut Bandung <i class="fas fa-fw fa-fighter-jet"></i></strong>
       <p class="text-white">Melihat potensi pariwisata di era perkembangan zaman yang semakin masif. Diperlukan sebuah sistem yang dapat meningkatkannya menjadi lebih sederhana. Kami dari tim Nocturnailed menghadirkan Skut Bandung, sebuah Aplikasi Penyedia Informasi Kepariwisataan Kota Bandung berbasis Internet of Things.</p>
@@ -153,12 +154,12 @@
             <section class="content">
 
               <div class="container">
-                <div class="row">
-                  <div class="col-sm-5 col-md-6 text-center">
+                <div class="row row-cols-1 row-cols-md-2 g-4">
+                  <div class="col text-center">
                    <!--  -->
                    @livewire('fiturk')
                   </div>
-                  <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0 text-center">
+                  <div class="col text-center">
                     <img src="{{ url('logo/logo2.png') }}" width="400px">
                   </div>
                 </div>
@@ -166,6 +167,26 @@
                <!--  -->
                
                @livewire('landing')
+               <hr>
+               <p class="text-white" align="center"><strong>Tim Nocturnailed</strong></p>
+               <p class="text-white" align="center"><strong>Sekolah Tinggi Teknologi Bandung</strong></p>
+          <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col" align="center">
+              <img src="https://i.ibb.co/CQr7t6n/Logopit-1626925514205.jpg" class="rounded-circle" width="100">
+              <p class="text-white">Dimas Aji Permadi</p>
+              <p class="text-white">Anggota 1</p>
+            </div>
+            <div class="col" align="center">
+              <img src="https://i.ibb.co/vXgH8Wr/Logopit-1619837910132.jpg" class="rounded-circle" width="100">
+              <p class="text-white">Muhammad Ikhwan Fathulloh</p>
+              <p class="text-white">Ketua</p>
+            </div>
+            <div class="col" align="center">
+              <img src="https://i.ibb.co/nczf7mW/Logopit-1626925559368.jpg" class="rounded-circle" width="100">
+              <p class="text-white">Shalih Rizaldy</p>
+              <p class="text-white">Anggota 2</p>
+            </div>
+          </div>
             </section>
             <!-- /.content -->
           </div>

@@ -6,10 +6,14 @@ use Livewire\Component;
 use App\Models\Destinasi;
 use App\Models\Transaksi;
 use App\Models\User;
+use Livewire\WithPagination;
 use Auth;
 
 class Landing extends Component
 {
+	use WithPagination;
+    protected $paginationTheme = 'bootstrap';
+
 	public $id_destinasi;
 	public $gambar_destinasi;
 	public $nama_destinasi;
@@ -23,6 +27,13 @@ class Landing extends Component
 	public $kelembapan;
 
 	public $ids;
+
+	public $search;
+
+    public function updatingSearch()
+    {
+        $this->resetPage();
+    }
 
 	public function detailData($id){
 		$destinasik = Destinasi::where('id',$id)->first();
@@ -50,24 +61,46 @@ class Landing extends Component
 			'saldo' => Auth::user()->saldo - $this->harga_destinasi,
 		];
 
-		Transaksi::create([
-			'id_user' => Auth::user()->id,
-			'uid' => Auth::user()->uid,
-			'id_destinasi' => $this->id_destinasi,
-			'status' => 0,
-		]);
 		if (Auth::user()->saldo < $this->harga_destinasi) {
-			
+			$this->alert('error', 'Saldo Kurang!', [
+			      'position' =>  'center', 
+			      'timer' =>  3000,  
+			      'toast' =>  false, 
+			      'text' =>  '', 
+			      'confirmButtonText' =>  'Ok', 
+			      'cancelButtonText' =>  'Cancel', 
+			      'showCancelButton' =>  false, 
+			      'showConfirmButton' =>  false, 
+			]);
 		}else{
+			Transaksi::create([
+				'id_user' => Auth::user()->id,
+				'uid' => Auth::user()->uid,
+				'id_destinasi' => $this->id_destinasi,
+				'status' => 0,
+			]);
+			
 			User::where('id', Auth::user()->id)->update([
             'saldo' => Auth::user()->saldo - $this->harga_destinasi,
 		]);
+			$this->alert('success', 'Berhasil Pesan Destinasi!', [
+			      'position' =>  'center', 
+			      'timer' =>  3000,  
+			      'toast' =>  false, 
+			      'text' =>  '', 
+			      'confirmButtonText' =>  'Ok', 
+			      'cancelButtonText' =>  'Cancel', 
+			      'showCancelButton' =>  false, 
+			      'showConfirmButton' =>  false, 
+			]);
 		}
+		
+
 	}
     public function render()
     {
         return view('livewire.landing', [
-        	'destinasi' => Destinasi::orderBy('id','DESC')->get(),
+        	'destinasi' => Destinasi::where('kategori_kecamatan', 'like', '%'.$this->search.'%')->orderBy('id','DESC')->paginate(6),
         ])->layout('landing.v_landing');
     }
 }

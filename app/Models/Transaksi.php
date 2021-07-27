@@ -21,8 +21,8 @@ class Transaksi extends Model
         return DB::table('transaksis')->get();
     }
 
-    public function allDatas($id){
-        return DB::table('transaksis')->where('id', $id)->get();
+    public function allDatas($uid){
+        return DB::table('transaksis')->where('status', 0)->where('uid', $uid)->get();
     }
 
     public function detailData($id){
@@ -39,9 +39,9 @@ class Transaksi extends Model
     	->update($data);
     }
 
-    public function deleteData($id){
+    public function deleteData($uid){
     	DB::table('transaksis')
-    	->where('id', $id)
+    	->where('uid', $uid)
     	->delete();
     }
 }

@@ -4,14 +4,25 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Voucher;
+use Livewire\WithPagination;
 
 class Vouchers extends Component
 {
+    use WithPagination;
+    protected $paginationTheme = 'bootstrap';
+
 	public $id_voucher;
 	public $nominal;
 	public $status;
 
 	public $ids;
+
+    public $search;
+
+    public function updatingSearch()
+    {
+        $this->resetPage();
+    }
 
 	public function clearform(){
         $this->id_voucher = '';
@@ -69,7 +80,7 @@ class Vouchers extends Component
     public function render()
     {
         return view('livewire.voucher', [
-        	'vouchers' => Voucher::orderBy('id','DESC')->get(),
+        	'vouchers' => Voucher::where('id_voucher', 'like', '%'.$this->search.'%')->orderBy('id','DESC')->paginate(5),
         ])->layout('voucher.v_voucher');
     }
 }

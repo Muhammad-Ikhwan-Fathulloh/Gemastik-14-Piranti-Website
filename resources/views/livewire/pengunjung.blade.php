@@ -1,13 +1,29 @@
 <div>
-    {{-- If your happiness depends on money, you will never be happy with yourself. --}}
+    {{-- A good traveler has no fixed plans and is not intent upon arriving. --}}
     <div class="card border-light mb-3 bg-ku">
 	  <div class="card-body">
+	  	<!--  -->
+    <!-- <div class="row">
+	  		<div class="form-group row">
+	  			<div class="col-sm-6 mb-3 mb-sm-0">
+	  				<label class="text-white"><strong>Tanggal Awal :</strong></label>
+	  				<input type="date" name="tgl_awal" class="form-control" id="tgl_awal" wire:model="tgl_awal" autocomplete="off" value="{{ date('d-m-Y')}}">
+	  			</div>
+	  			<div class="col-sm-6">
+	  				<label class="text-white"><strong>Tanggal Akhir :</strong></label>
+	  				<input type="date" name="tgl_akhir" class="form-control" id="tgl_akhir" wire:model="tgl_akhir" autocomplete="off" value="{{ date('d-m-Y')}}">
+	  			</div>
+	  		</div>
+	 </div> -->
+	 <!--  -->
+	 <hr>
 	  	<div>
       <form class="d-flex" wire:poll>
-          <input wire:model="search" class="form-control me-2 border-light" type="text" name="search" placeholder="Cari berdasarkan ID Perangkat" aria-label="Search" value="">
+          <input wire:model="search" class="form-control me-2 border-light" type="date('Y-m-d')" name="search" placeholder="Cari berdasarkan Tanggal" aria-label="Search" value="">
           <span class="btn btn-outline-light" value="cari"><i class="fas fa-fw fa-search"></i></span>
         </form>
     </div>
+    
     <br>
 	  	<!-- Pesan -->
 	  	@if (session('pesan'))
@@ -25,21 +41,21 @@
 			<tr>
 				<th>No</th>
 				<th>ID Perangkat</th>
-				<th>Suhu</th>
-				<th>Kelembapan</th>
+				<th>Jumlah Kunjungan</th>
+				<th>Pendapatan</th>
 				<th>Tanggal</th>
 				<th>Aksi</th>
 			</tr>
 		</thead>
 		<tbody>
 			<?php $no=1; ?>
-			@foreach ($cuaca as $datas)
+			@foreach ($kunjungan as $datas)
 				<tr>
 					<td>{{ $no++ }}</td>
 					<td>{{ $datas->id_destinasi }}</td>
-					<td>{{ $datas->suhu }} °C</td>
-					<td>{{ $datas->kelembapan }} %</td>
-					<td>{{ $datas->created_at }}</td>
+					<td>{{ $datas->jumlah_kunjungan }} Orang</td>
+					<td>Rp.{{ number_format($datas->pendapatan) }},-</td>
+					<td>{{ $datas->tanggal }}</td>
 					<td>
 						<button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delete{{ $datas->id }}"><i class="fas fa-fw fa-trash"></i> <strong>Hapus</strong></button>
 					</td>
@@ -50,13 +66,13 @@
 		</tbody>
 	</table>
 	  </div>
-	  
+	  {{ $kunjungan->links() }}
 	  </div>
 	</div>
 
 	<!-- Hapus Data -->
 <!-- Modal -->
-@foreach ($cuaca as $datas)
+@foreach ($kunjungan as $datas)
 <div wire:ignore.self class="modal modal-danger fade" id="delete{{ $datas->id }}">
   <div class="modal-dialog modal-sm">
     <div class="modal-content bg-ku">
@@ -80,4 +96,3 @@
 
 	<!-- Hapus Data -->
 </div>
-

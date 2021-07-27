@@ -3,7 +3,7 @@
     <br>
 <h4 class="text-white"><i class="fas fa-fw fa-tasks"></i> Fitur Destinasi Skut Bandung</h4>
 <hr>
-<div class="row row-cols-1 row-cols-md-2 g-4" wire:poll>
+<div class="row row-cols-1 row-cols-md-3 g-4" wire:poll>
 @foreach ($fiturs as $datas)
 <div class="col">
 	<div class="card bg-b">

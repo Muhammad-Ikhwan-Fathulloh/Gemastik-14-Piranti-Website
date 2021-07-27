@@ -22,7 +22,7 @@ class Destinasicontroller extends Controller
 
     public function indexs($id_destinasi, Request $request){
     	$data = [
-    		'destinasi' => $this->Destinasi->allDatas($uid),
+    		'destinasi' => $this->Destinasi->allDatas($id_destinasi),
     	];
 
     	return response()->json($data);
@@ -30,15 +30,7 @@ class Destinasicontroller extends Controller
 
     public function update($id_destinasi, Request $request){
     	$data = [
-            'uid' => $request->uid,
-            'username' => $request->username,
-            'fullname' => $request->fullname,
-            'tempat_lahir' => $request->tempat_lahir,
-            'tanggal_lahir' => $request->tanggal_lahir,
-            'nohp' => $request->nohp,
-            'alamat' => $request->alamat,
-            'status' => $request->status,
-            'jabatan' => $request->jabatan,
+            'jumlah_pengunjung' => $request->jumlah_pengunjung,
     	];
 
     	$this->Destinasi->editData($id_destinasi, $data);

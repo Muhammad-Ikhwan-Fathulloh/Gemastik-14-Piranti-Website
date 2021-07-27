@@ -5,10 +5,14 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Models\Destinasi;
 use App\Models\Kategori;
+use Livewire\WithPagination;
 use Auth;
 
 class Destinasik extends Component
 {
+    use WithPagination;
+    protected $paginationTheme = 'bootstrap';
+
 	public $id_destinasi;
 	public $gambar_destinasi;
 	public $nama_destinasi;
@@ -21,6 +25,13 @@ class Destinasik extends Component
 
 	public $ids;
 	public $id_destinasis;
+
+    public $search;
+
+    public function updatingSearch()
+    {
+        $this->resetPage();
+    }
 
 	public function clearform(){
         $this->id_destinasi = '';
@@ -130,16 +141,32 @@ class Destinasik extends Component
 		session()->flash('pesan','Data Berhasil Dihapus !!!');
 	}
 
+    public function statusku($id){
+        $Destinasik = Destinasi::where('id',$id)->first();
+        $idk = $Destinasik->id;
+        $statusk = $Destinasik->status;
+        if ($statusk==0) {
+            Destinasi::where('id', $idk)->update([
+            'status_destinasi' => 1,
+            ]);
+        }else if($statusk==1){
+            Destinasi::where('id', $idk)->update([
+            'status_destinasi' => 0,
+            ]);
+        }
+        
+    }
+
     public function render()
     {
         if (Auth::user()->level==1) {
             return view('livewire.destinasik', [
-            'destinasi' => Destinasi::get(),
+            'destinasi' => Destinasi::where('kategori_kecamatan', 'like', '%'.$this->search.'%')->orderBy('id','DESC')->paginate(5),
             'kategori' => Kategori::get(),
             ])->layout('destinasi.v_destinasik');
         }else if (Auth::user()->level==2) {
             return view('livewire.destinasik', [
-            'destinasi' => Destinasi::get(),
+            'destinasi' => Destinasi::where('id_user', Auth::user()->id)->where('kategori_kecamatan', 'like', '%'.$this->search.'%')->orderBy('id','DESC')->paginate(5),
             'kategori' => Kategori::get(),
             ])->layout('destinasi.v_destinasik');
         }

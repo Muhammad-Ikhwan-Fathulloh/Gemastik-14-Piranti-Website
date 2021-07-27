@@ -20,17 +20,25 @@ class Usercontroller extends Controller
     	return response()->json($data);
     }
 
-    public function indexs($uid, Request $request){
+    public function indexs($id, Request $request){
     	$data = [
-    		'user' => $this->User->allDatas($uid),
+    		'user' => $this->User->allDatas($id),
     	];
 
     	return response()->json($data);
     }
 
-    public function update($uid, Request $request){
+    public function indexx($uid, Request $request){
+        $data = [
+            'user' => $this->User->allDatax($uid),
+        ];
+
+        return response()->json($data);
+    }
+
+    public function update($id, Request $request){
     	$data = [
-            'uid' => $request->uid,
+            'id' => $request->id,
             'username' => $request->username,
             'fullname' => $request->fullname,
             'tempat_lahir' => $request->tempat_lahir,
@@ -41,10 +49,10 @@ class Usercontroller extends Controller
             'jabatan' => $request->jabatan,
     	];
 
-    	$this->User->editDatas($uid, $data);
+    	$this->User->editDatas($id, $data);
 
     	return response()->json([
-            "message" => "Sukses ubah data".$uid
+            "message" => "Sukses ubah data".$id
         ]);
 
     }

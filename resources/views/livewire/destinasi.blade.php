@@ -1,6 +1,8 @@
 <div>
     {{-- Because she competes with no one, no one can compete with her. --}}
-    <div class="card">
+    
+    <br>
+    <div wire:ignore.self class="card">
       <div class="card-header">
         <i class="fas fa-fw fa-map"></i><strong> Destinasi</strong>
       </div>

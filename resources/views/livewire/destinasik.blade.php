@@ -1,8 +1,5 @@
 <div>
     {{-- A good traveler has no fixed plans and is not intent upon arriving. --}}
-    <div wire:poll.1000ms>
-        <h5 class="text-white btn btn-info"><strong>{{ now() }}</strong></h5>
-    </div>
     <div class="card border-light mb-3 bg-ku">
 	  <div class="card-body">
 	  	<button type="button" class="btn btn-light" data-toggle="modal" data-target="#adddestinasi" wire:click.prevent="clearform()"><i class="fas fa-fw fa-plus-circle"></i>
@@ -42,7 +39,9 @@
 				<th>Jumlah Pengunjung</th>
 				<th>Latitude</th>
 				<th>Longitude</th>
+        @if (auth()->user()->level==1)
 				<th>Status</th>
+        @endif
 				<th>Aksi</th>
 			</tr>
 		</thead>
@@ -67,17 +66,19 @@
 					<td>{{ $datas->jumlah_pengunjung }}</td>
 					<td>{{ $datas->latitude_destinasi }}</td>
 					<td>{{ $datas->longitude_destinasi }}</td>
+          @if (auth()->user()->level==1)
 					<td>
 						<div class="form-check form-switch" align="right">
-						  @if($datas->status == 0)
-						  <input class="form-check-input border-info" type="checkbox" name="model" id="mode1" wire:click="">
+						  @if($datas->status_destinasi == 0)
+						  <input class="form-check-input border-info" type="checkbox" name="model" id="mode1" wire:click.prevent="statusku({{ $datas->id }})">
 						  <!-- <label class="form-check-label text-white" for="model"><strong>Mode Presensi</strong> <strong class="text-info">OFF</strong></label> -->
-						  @elseif($datas->status == 1)
-						  <input class="form-check-input border-info" type="checkbox" name="model" id="mode1" wire:click="" checked>
+						  @elseif($datas->status_destinasi == 1)
+						  <input class="form-check-input border-info" type="checkbox" name="model" id="mode1" wire:click.prevent="statusku({{ $datas->id }})" checked>
 						  <!-- <label class="form-check-label text-white" for="model"><strong>Mode Presensi</strong> <strong class="text-info">ON</strong></label> -->
 						  @endif
 						</div>
 					</td>
+          @endif
 					<td>
 						<button class="btn btn-sm btn-warning" data-toggle="modal" data-target="#editdestinasi" wire:click.prevent="detailData({{ $datas->id }})"><i class="fas fa-fw fa-pen"></i> <strong>Ubah</strong></button>
 						<hr>
@@ -90,7 +91,8 @@
 		</tbody>
 	</table>
 	  </div>
-
+    <hr>
+    {{ $destinasi->links() }}
 	  </div>
 	</div>
 <!-- ------------------------------------------------------------------------------------------------------ -->
@@ -138,7 +140,7 @@
 
   <div class="form-group">
     <label class="text-white" for="">Alamat Destinasi</label>
-    <input type="text" name="alamat_destinasi" wire:model="alamat_destinasi" class="form-control" placeholder="Masukkan Tempat Lahir">
+    <input type="text" name="alamat_destinasi" wire:model="alamat_destinasi" class="form-control" placeholder="Masukkan Alamat Destinasi">
     @error('alamat_destinasi') <div class="alert alert-danger">{{ $message }}</div> @enderror
   </div>
 
@@ -241,7 +243,7 @@
 
   <div class="form-group">
     <label class="text-white" for="">Alamat Destinasi</label>
-    <input type="text" name="alamat_destinasi" wire:model="alamat_destinasi" class="form-control" placeholder="Masukkan Tempat Lahir">
+    <input type="text" name="alamat_destinasi" wire:model="alamat_destinasi" class="form-control" placeholder="Masukkan Alamat Destinasi">
     @error('alamat_destinasi') <div class="alert alert-danger">{{ $message }}</div> @enderror
   </div>
 

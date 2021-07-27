@@ -10,6 +10,12 @@ class cuaca extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'id_destinasi',
+        'suhu',
+        'kelembapan',
+    ];
+
     public function allData(){
         return DB::table('cuacas')->get();
     }

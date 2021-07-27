@@ -57,8 +57,8 @@
           <div class="card-body p-0">
             <!-- Nested Row within Card Body -->
             <div class="row">
-              <div class="col-lg-6 bg-ka">
-                <img src="{{ url('logo/skut_bandung.png') }}" width="450px">
+              <div class="col-lg-6 d-none d-lg-block bg-ka">
+                <a href="/"><img src="{{ url('logo/skut_bandung.png') }}" width="450px"></a>
               </div>
               <div class="col-lg-6 bg-ku">
                 <div class="p-5">

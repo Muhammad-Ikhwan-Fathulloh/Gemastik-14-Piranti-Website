@@ -53,7 +53,7 @@
         <!-- Nested Row within Card Body -->
         <div class="row">
           <div class="col-lg-5 d-none d-lg-block bg-ka">
-            <img src="{{ url('logo/skut_bandung.png') }}" width="450px">
+            <a href="/"><img src="{{ url('logo/skut_bandung.png') }}" width="450px"></a>
           </div>
           <div class="col-lg-7 bg-ku">
             <div class="p-5">
@@ -68,6 +68,16 @@
                   
                 </div>
                 @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                <div class="form-group">
+                  
+                    <input type="text" class="form-control form-control-user @error('username') is-invalid @enderror" id="username" name="username" placeholder="Username" value="{{ old('username') }}" required autocomplete="username" autofocus>
+                  
+                </div>
+                @error('username')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
