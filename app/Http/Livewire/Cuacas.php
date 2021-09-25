@@ -6,7 +6,6 @@ use Livewire\Component;
 use App\Models\Cuaca;
 use App\Models\Destinasi;
 use Livewire\WithPagination;
-use Asantibanez\LivewireCharts\Models\ColumnChartModel;
 use Auth;
 
 class Cuacas extends Component
@@ -28,22 +27,17 @@ class Cuacas extends Component
 
     public function render()
     {
-        $columnChartModel = (new ColumnChartModel())
-        ->setTitle('Expenses by Type')
-        ->addColumn('Food', 100, '#f6ad55')
-        ->addColumn('Shopping', 200, '#fc8181')
-        ->addColumn('Travel', 300, '#90cdf4');
         if (Auth::user()->level==1) {
             return view('livewire.cuacas', [
-                'cuaca' => Cuaca::where('id_destinasi', 'like', '%'.$this->search.'%')->orderBy('id','DESC')->get(),
+                'cuaca' => Cuaca::where('id_destinasi', 'like', '%'.$this->search.'%')->orderBy('id','DESC')->paginate(10),
                 
-            ])->layout('cuacak.v_cuacak')->with(['columnChartModel' => $columnChartModel]);
+            ])->layout('cuacak.v_cuacak');
         }elseif (Auth::user()->level==2) {
             $destinasik = Destinasi::where('id_user', Auth::user()->id)->first();
             return view('livewire.cuacas', [
-                'cuaca' => Cuaca::where('id_destinasi', $destinasik->id_destinasi)->where('id_destinasi', 'like', '%'.$this->search.'%')->orderBy('id','DESC')->get(),
+                'cuaca' => Cuaca::where('id_destinasi', $destinasik->id_destinasi)->where('id_destinasi', 'like', '%'.$this->search.'%')->orderBy('id','DESC')->paginate(10),
                 
-            ])->layout('cuacak.v_cuacak')->with(['columnChartModel' => $columnChartModel]);
+            ])->layout('cuacak.v_cuacak');
         } 
     }
 }

@@ -6,6 +6,8 @@ use Livewire\Component;
 use App\Models\Destinasi;
 use App\Models\Transaksi;
 use App\Models\User;
+use App\Models\Pesan;
+use App\Models\Kategorikota;
 use Livewire\WithPagination;
 use Auth;
 
@@ -26,9 +28,13 @@ class Landing extends Component
 	public $suhu;
 	public $kelembapan;
 
+	public $pesan;
+    public $file;
+
 	public $ids;
 
 	public $search;
+	public $kategorik;
 
     public function updatingSearch()
     {
@@ -97,10 +103,47 @@ class Landing extends Component
 		
 
 	}
+
+
+	public function clearformk(){
+        $this->pesan = '';
+        $this->file = '';
+    }
+
+
+	public function SimpanDatak($idpesan){
+    	$this->validate([
+            'pesan' => 'required',
+        ], [
+            'pesan.required' => 'Wajib diisi !!',
+        ]);
+        
+        Pesan::create([
+            'id_pesan' => $idpesan,
+            'id_user' => Auth::user()->id,
+            'pesan' => $this->pesan,
+            'file' => $this->file,
+        ]);
+        $this->clearformk();
+
+        $this->alert('success', 'Pesan Terkirim!', [
+                  'position' =>  'center', 
+                  'timer' =>  3000,  
+                  'toast' =>  false, 
+                  'text' =>  '', 
+                  'confirmButtonText' =>  'Ok', 
+                  'cancelButtonText' =>  'Cancel', 
+                  'showCancelButton' =>  false, 
+                  'showConfirmButton' =>  false, 
+            ]);
+    }
+
     public function render()
     {
         return view('livewire.landing', [
-        	'destinasi' => Destinasi::where('kategori_kecamatan', 'like', '%'.$this->search.'%')->orderBy('id','DESC')->paginate(6),
+        	'destinasi' => Destinasi::where('kategori_kecamatan', 'like', '%'.$this->search.'%')->orwhere('kategori_wisata', 'like', '%'.$this->search.'%')->orderBy('id','DESC')->paginate(6),
+        	
+        	'wisata' => Kategorikota::get(),
         ])->layout('landing.v_landing');
     }
 }

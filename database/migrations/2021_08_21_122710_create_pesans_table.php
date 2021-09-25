@@ -1,0 +1,37 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreatePesansTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('pesans', function (Blueprint $table) {
+            $table->id();
+            $table->string('id_pesan')->nullable();
+            $table->integer('id_user');
+            $table->string('pesan')->nullable();
+            $table->string('file')->nullable();
+            $table->string('tanggal_buat')->nullable();
+            $table->string('tanggal_ubah')->nullable();
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('pesans');
+    }
+}

@@ -34,7 +34,8 @@
 				<th>Nama Destinasi</th>
 				<th>Alamat Destinasi</th>
 				<th>Harga Destinasi</th>
-				<th>Kategori Destinasi</th>
+				<th>Kategori Kecamatan</th>
+        <th>Kategori Wisata</th>
 				<th>Keterangan Destinasi</th>
 				<th>Jumlah Pengunjung</th>
 				<th>Latitude</th>
@@ -62,6 +63,7 @@
 					<td>{{ $datas->alamat_destinasi }}</td>
 					<td>Rp.{{ number_format($datas->harga_destinasi) }},-</td>
 					<td>{{ $datas->kategori_kecamatan }}</td>
+          <td>{{ $datas->kategori_wisata }}</td>
 					<td>{{ $datas->keterangan_destinasi }}</td>
 					<td>{{ $datas->jumlah_pengunjung }}</td>
 					<td>{{ $datas->latitude_destinasi }}</td>
@@ -164,6 +166,22 @@
 
     @error('kategori_kecamatan') <div class="alert alert-danger">{{ $message }}</div> @enderror
   </div>
+
+  <div class="form-group">
+    <label class="text-white" for="">Kategori Wisata</label>
+    <!-- <input type="text" name="status" wire:model="status" class="form-control" placeholder="Masukkan Status"> -->
+
+    <select class="custom-select" id="inputGroupSelect01" type="text" name="kategori_wisata" wire:model="kategori_wisata">
+    <option selected>------- Kategori Wisata -------</option>
+    @foreach ($kategoriwisata as $datak)
+    <option value="{{$datak->kategori_wisata}}">{{$datak->kategori_wisata}}</option>
+    @endforeach
+  </select>
+
+    @error('kategori_wisata') <div class="alert alert-danger">{{ $message }}</div> @enderror
+  </div>
+
+
   
   <div class="form-group">
     <label class="text-white" for="">Keterangan Destinasi</label>

@@ -28,7 +28,8 @@
 		<thead class="table">
 			<tr>
 				<th>No</th>
-				<th>Kategori</th>
+        <th>Kota/Kabupaten</th>
+				<th>Kecamatan</th>
 				<th>Aksi</th>
 			</tr>
 		</thead>
@@ -37,6 +38,7 @@
 			@foreach ($kategori as $datas)
 				<tr>
 					<td>{{ $no++ }}</td>
+          <td>{{ $datas->kategori_kota }}</td>
 					<td>{{ $datas->kategori_kecamatan }}</td>
 					<td>
 						<button class="btn btn-sm btn-warning" data-toggle="modal" data-target="#editkategori" wire:click.prevent="detailData({{ $datas->id }})"><i class="fas fa-fw fa-pen"></i> <strong>Ubah</strong></button>
@@ -78,6 +80,13 @@
 					<span aria-hidden="true">&times;</span>
 			</div>
 		@endif
+
+    <select class="custom-select" id="inputGroupSelect01" type="text" name="kategori_kota" wire:model="kategori_kota">
+              <option selected>------- Kota/Kabupaten -------</option>
+              @foreach ($kota as $datas)      
+              <option value="{{$datas->kategori_kota}}">{{$datas->kategori_kota}}</option>
+              @endforeach
+            </select>
   <div class="form-group">
     <label class="text-white" for="">Kategori Kecamatan</label>
     <input type="text" name="kategori_kecamatan" wire:model="kategori_kecamatan" class="form-control" placeholder="Masukkan Kategori Kecamatan">
@@ -121,6 +130,13 @@
 					<span aria-hidden="true">&times;</span>
 			</div>
 		@endif
+
+    <select class="custom-select" id="inputGroupSelect01" type="text" name="kategori_kota" wire:model="kategori_kota">
+              <option selected>------- Kota/Kabupaten -------</option>
+              @foreach ($kota as $datas)      
+              <option value="{{$datas->kategori_kota}}">{{$datas->kategori_kota}}</option>
+              @endforeach
+            </select>
   <div class="form-group">
     <label class="text-white" for="">Kategori Kecamatan</label>
     <input type="text" name="kategori_kecamatan" wire:model="kategori_kecamatan" class="form-control" placeholder="Masukkan Kategori Kecamatan">

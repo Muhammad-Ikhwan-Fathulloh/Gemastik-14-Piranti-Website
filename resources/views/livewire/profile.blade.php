@@ -27,6 +27,9 @@
 
 			  <div class="form-group">
 			    <label class="text-white" for="">Foto</label>
+			    <br>
+			    <img src="{{ $fotok }}" class="rounded-circle" width="150px">
+			    <hr>
 			    <input type="text" name="foto" wire:model="foto" class="form-control" placeholder="Upload Foto" readonly="">
 			    @error('foto') <div class="alert alert-danger">{{ $message }}</div> @enderror
 			  </div>

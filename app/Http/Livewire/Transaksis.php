@@ -109,7 +109,8 @@ class Transaksis extends Component
     	}else if (Auth::user()->level==3) {
     		return view('livewire.transaksi', [
             'transaksi' => Transaksi::where('uid', 'like', '%'.$this->search.'%')->where('id_user', Auth::user()->id)->orderBy('id','DESC')->paginate(5),
-            'transaksik' => Transaksi::where('uid', 'like', '%'.$this->search.'%')->where('transaksis.id_user', Auth::user()->id)->Join('destinasis', 'transaksis.id_destinasi', '=', 'destinasis.id_destinasi')->orderBy('status','ASC')->get(),
+            'transaksik' => Transaksi::where('uid', 'like', '%'.$this->search.'%')->where('id_user', Auth::user()->id)->orderBy('id','DESC')->orderBy('status','ASC')->get(),
+            'destinasik' => Destinasi::get(),
             ])->layout('transaksi.v_transaksi');
     	}
     }

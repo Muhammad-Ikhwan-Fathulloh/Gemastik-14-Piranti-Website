@@ -7,6 +7,10 @@ use App\Http\Controllers\Transaksicontroller;
 use App\Http\Controllers\Destinasicontroller;
 use App\Http\Controllers\Cuacacontroller;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Topup;
+use App\Http\Controllers\Chat;
+use App\Http\Controllers\K_kecamatan;
+use App\Http\Controllers\K_wisata;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +31,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/user',[Usercontroller::class, 'index']);
 Route::get('/user/{id}',[Usercontroller::class, 'indexs']);
 Route::get('/users/{uid}',[Usercontroller::class, 'indexx']);
+Route::get('/usersemail/{email}',[Usercontroller::class, 'indexxx']);
 Route::post('/user',[Usercontroller::class, 'insert']);
 Route::put('/user/{id}',[Usercontroller::class, 'update']);
 Route::delete('/user/{id}',[Usercontroller::class, 'delete']);
@@ -43,10 +48,25 @@ Route::delete('/transaksi/{id}',[Transaksicontroller::class, 'delete']);
 //-------------------------------------------------------------------------
 Route::get('/destinasi',[Destinasicontroller::class, 'index']);
 Route::get('/destinasi/{id_destinasi}',[Destinasicontroller::class, 'indexs']);
+Route::get('/destinasicategori/{kategori}',[Destinasicontroller::class, 'indexcategori']);
 Route::post('/destinasi',[Destinasicontroller::class, 'insert']);
 Route::put('/destinasi/{id_destinasi}',[Destinasicontroller::class, 'update']);
 Route::delete('/destinasi/{id_destinasi}',[Destinasicontroller::class, 'delete']);
 //-------------------------------------------------------------------------
 
+//-------------------------------------------------------------------------
 Route::get('/cuaca/{id_destinasi}',[Cuacacontroller::class, 'indexs']);
 Route::post('/cuaca',[Cuacacontroller::class, 'insert']);
+//-------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------
+Route::put('/topup',[Topup::class, 'UbahSaldo']);
+//-------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------
+Route::get('/kategori/kecamatan',[K_kecamatan::class, 'GetKecamatan']);
+//-------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------
+Route::get('/kategori/wisata',[K_wisata::class, 'GetWisata']);
+//-------------------------------------------------------------------------

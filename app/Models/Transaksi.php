@@ -10,6 +10,8 @@ class Transaksi extends Model
 {
     use HasFactory;
 
+    
+
     protected $fillable = [
         'id_user',
         'uid',

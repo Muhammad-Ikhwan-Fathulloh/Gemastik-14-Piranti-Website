@@ -69,7 +69,13 @@
       <li class="nav-item {{request()->is('kategori')?'active':''}}">
         <a class="nav-link" href="/kategori">
           <i class="fas fa-fw fa-clipboard-list"></i>
-          <span>Kategori Destinasi</span></a>
+          <span>Kategori Kecamatan</span></a>
+      </li>
+
+      <li class="nav-item {{request()->is('kategoriwisata')?'active':''}}">
+        <a class="nav-link" href="/kategoriwisata">
+          <i class="fas fa-fw fa-clipboard-list"></i>
+          <span>Kategori Wisata</span></a>
       </li>
 
       <li class="nav-item {{request()->is('perangkat')?'active':''}}">
@@ -167,6 +173,12 @@
         <a class="nav-link" href="/topup">
           <i class="fas fa-fw fa-dollar-sign"></i>
           <span>Top Up</span></a>
+      </li>
+
+      <li class="nav-item {{request()->is('chat')?'active':''}}">
+        <a class="nav-link" href="/chat">
+          <i class="fas fa-fw fa-comments"></i>
+          <span>Forum Chat</span></a>
       </li>
 
        <!-- Nav Item - Utilities Collapse Menu -->

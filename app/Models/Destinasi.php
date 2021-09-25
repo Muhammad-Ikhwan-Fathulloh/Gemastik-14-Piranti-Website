@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Auth;
 
 class Destinasi extends Model
 {
@@ -20,8 +21,16 @@ class Destinasi extends Model
     	return DB::table('destinasis')->where('id_destinasi', $id_destinasi)->get();
     }
 
+    public function allDataCategori($kategori){
+    	return DB::table('destinasis')->where('kategori_wisata', $kategori)->get();
+    }
+
     public function detailDatas($id_destinasi){
         return DB::table('destinasis')->where('id_destinasi', $id_destinasi)->first();
+    }
+
+    public function detailData(){
+        return DB::table('destinasis')->where('id_user', Auth::user()->id)->first();
     }
 
     public function editData($id_destinasi, $data){

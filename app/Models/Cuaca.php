@@ -20,6 +20,10 @@ class cuaca extends Model
         return DB::table('cuacas')->get();
     }
 
+    public function allDatak($id_destinasi){
+        return DB::table('cuacas')->where('id_destinasi', $id_destinasi)->get();
+    }
+
     public function allDatas($id){
         return DB::table('cuacas')->where('id', $id)->get();
     }

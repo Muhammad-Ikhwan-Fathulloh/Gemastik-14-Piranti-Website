@@ -1,7 +1,7 @@
 @extends('layout.v_template')
 
-@section('title','Kategori Destinasi')
-@section('halaman','Kategori Destinasi')
+@section('title','Kategori Kecamatan Destinasi')
+@section('halaman','Kategori Kecamatan Destinasi')
 
 @section('content')
 @livewire('kategoris')

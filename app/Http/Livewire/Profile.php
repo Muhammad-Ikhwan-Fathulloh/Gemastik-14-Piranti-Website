@@ -57,7 +57,9 @@ class Profile extends Component
     	$this->latitude_user = $detailUser->latitude_user;
     	$this->longitude_user = $detailUser->longitude_user;
 
-        return view('livewire.profile')->layout('profile.v_profile');
+        return view('livewire.profile', [
+            'fotok' => $this->foto,
+        ])->layout('profile.v_profile');
     }
 
     

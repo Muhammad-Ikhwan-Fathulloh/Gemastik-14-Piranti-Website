@@ -36,6 +36,14 @@ class Usercontroller extends Controller
         return response()->json($data);
     }
 
+    public function indexxx($email, Request $request){
+        $data = [
+            'user' => $this->User->emaildata($email),
+        ];
+
+        return response()->json($data);
+    }
+
     public function update($id, Request $request){
     	$data = [
             'id' => $request->id,

@@ -198,6 +198,7 @@
           </div>
           <!-- /.content-wrapper -->
           <!-- Footer -->
+
           @include('sweetalert::alert')
       @livewireScripts
       <!-- End of Footer -->
@@ -277,11 +278,13 @@
     crossorigin=""></script>
 
 <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
-<script src="https://cdn.jsdelivr.net/gh/npm/apexcharts"></script>
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+@yield('footer')
 
 @stack('scripts')
 <!-- @stack('scriptk') -->
 <x-livewire-alert::scripts />
+
 </body>
 
 </html>

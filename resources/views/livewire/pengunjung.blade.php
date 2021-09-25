@@ -25,6 +25,7 @@
     </div>
     
     <br>
+    <a href="/pengunjung/grafik" class="btn btn-info"><i class="fas fa-fw fa-bars"></i> Grafik</a>
 	  	<!-- Pesan -->
 	  	@if (session('pesan'))
 			<div class="alert alert-success">
@@ -34,6 +35,8 @@
 			</div>
 		@endif
 		<hr>
+		
+		
 		<!-- Data -->
 	  	<div class="table-responsive" wire:poll>
 	<table class="table table-light">

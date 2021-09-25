@@ -28,6 +28,14 @@ class Destinasicontroller extends Controller
     	return response()->json($data);
     }
 
+	public function indexcategori($kategori, Request $request){
+    	$data = [
+    		'destinasicategori' => $this->Destinasi->allDataCategori($kategori),
+    	];
+
+    	return response()->json($data);
+    }
+
     public function update($id_destinasi, Request $request){
     	$data = [
             'jumlah_pengunjung' => $request->jumlah_pengunjung,

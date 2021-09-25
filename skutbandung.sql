@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 24, 2021 at 05:43 AM
+-- Generation Time: Sep 04, 2021 at 12:14 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -741,7 +741,16 @@ INSERT INTO `cuacas` (`id`, `id_user`, `id_destinasi`, `suhu`, `kelembapan`, `st
 (736, NULL, '45170845', 26.4, 95, 0, '2021-07-23 08:56:00', '2021-07-23 08:56:00'),
 (737, NULL, '45170845', 26.2, 95, 0, '2021-07-23 08:56:06', '2021-07-23 08:56:06'),
 (738, NULL, '45170845', 26.2, 95, 0, '2021-07-23 08:56:12', '2021-07-23 08:56:12'),
-(739, NULL, '45170845', 26.5, 95, 0, '2021-07-23 08:56:17', '2021-07-23 08:56:17');
+(739, NULL, '45170845', 26.5, 95, 0, '2021-07-23 08:56:17', '2021-07-23 08:56:17'),
+(740, NULL, '45170845', 29.8, 73, 0, '2021-07-24 05:18:13', '2021-07-24 05:18:13'),
+(741, NULL, '45170845', 29.4, 73, 0, '2021-07-24 05:18:13', '2021-07-24 05:18:13'),
+(742, NULL, '45170845', 29.4, 73, 0, '2021-07-24 05:18:13', '2021-07-24 05:18:13'),
+(743, NULL, '45170845', 29.6, 73, 0, '2021-07-24 05:18:18', '2021-07-24 05:18:18'),
+(744, NULL, '45170845', 29.4, 72, 0, '2021-07-24 05:18:24', '2021-07-24 05:18:24'),
+(745, NULL, '45170845', 29.5, 73, 0, '2021-07-24 05:18:31', '2021-07-24 05:18:31'),
+(746, NULL, '45170845', 30.4, 73, 0, '2021-07-24 05:18:36', '2021-07-24 05:18:36'),
+(747, NULL, '45170845', 29.6, 73, 0, '2021-07-24 05:18:47', '2021-07-24 05:18:47'),
+(748, NULL, '45170845', 29.6, 73, 0, '2021-07-24 05:18:52', '2021-07-24 05:18:52');
 
 -- --------------------------------------------------------
 
@@ -760,7 +769,7 @@ CREATE TABLE `destinasis` (
   `kategori_provinsi` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `kategori_kota` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `kategori_kecamatan` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `kategori_kelurahan` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `kategori_wisata` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `keterangan_destinasi` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `jumlah_pengunjung` int(11) NOT NULL DEFAULT '0',
   `latitude_destinasi` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -776,10 +785,10 @@ CREATE TABLE `destinasis` (
 -- Dumping data for table `destinasis`
 --
 
-INSERT INTO `destinasis` (`id`, `id_user`, `id_destinasi`, `gambar_destinasi`, `nama_destinasi`, `alamat_destinasi`, `harga_destinasi`, `kategori_provinsi`, `kategori_kota`, `kategori_kecamatan`, `kategori_kelurahan`, `keterangan_destinasi`, `jumlah_pengunjung`, `latitude_destinasi`, `longitude_destinasi`, `suhu`, `kelembapan`, `status_destinasi`, `created_at`, `updated_at`) VALUES
-(1, 2, '45170845', 'https://i.ibb.co/0q61vNm/gs.jpg', 'Gedung Sate', 'Jl. Diponegoro No.22, Citarum, Kec. Bandung Wetan, Kota Bandung, Jawa Barat 40115', 15000, NULL, NULL, 'Bandung Wetan', NULL, 'Bersejarah', 4, '107.61875635255338', '-6.902214918061466', 26.5, 95, 0, '2021-06-26 23:14:18', '2021-07-10 21:25:06'),
-(2, 5, '46170846', 'https://i.ibb.co/whJr8Zj/bch.jpg', 'Bandung Creative Hub', 'Jl. Laswi No.7, Kacapiring, Kec. Batununggal, Kota Bandung, Jawa Barat 40271', 20000, NULL, NULL, 'Batununggal', NULL, 'Kesenian', 0, '107.63139812329283', '-6.91751184044601', 0, 0, 0, '2021-07-10 20:56:45', '2021-07-10 20:56:45'),
-(3, 1, '47170847', 'https://i.ibb.co/chtQLwq/mg.jpg', 'Museum Geologi Bandung', 'Jl. Diponegoro No.57, Cihaur Geulis, Kec. Cibeunying Kaler, Kota Bandung, Jawa Barat 40122', 10000, NULL, NULL, 'Cibeunying Kaler', NULL, 'Bersejarah', 0, '107.62141238465856', '-6.899757598729122', 0, 0, 0, '2021-07-10 21:23:20', '2021-07-10 21:23:20');
+INSERT INTO `destinasis` (`id`, `id_user`, `id_destinasi`, `gambar_destinasi`, `nama_destinasi`, `alamat_destinasi`, `harga_destinasi`, `kategori_provinsi`, `kategori_kota`, `kategori_kecamatan`, `kategori_wisata`, `keterangan_destinasi`, `jumlah_pengunjung`, `latitude_destinasi`, `longitude_destinasi`, `suhu`, `kelembapan`, `status_destinasi`, `created_at`, `updated_at`) VALUES
+(1, 2, '45170845', 'https://i.ibb.co/0q61vNm/gs.jpg', 'Gedung Sate', 'Jl. Diponegoro No.22, Citarum, Kec. Bandung Wetan, Kota Bandung, Jawa Barat 40115', 15000, 'Jawa Barat', 'Kota Bandung', 'Bandung Wetan', 'Sejarah', 'Bersejarah', 0, '107.61875635255338', '-6.902214918061466', 29.6, 73, 0, '2021-06-26 23:14:18', '2021-07-10 21:25:06'),
+(2, 5, '46170846', 'https://i.ibb.co/whJr8Zj/bch.jpg', 'Bandung Creative Hub', 'Jl. Laswi No.7, Kacapiring, Kec. Batununggal, Kota Bandung, Jawa Barat 40271', 20000, 'Jawa Barat', 'Kota Bandung', 'Batununggal', 'Hiburan', 'Kesenian', 0, '107.63139812329283', '-6.91751184044601', 0, 0, 0, '2021-07-10 20:56:45', '2021-07-10 20:56:45'),
+(3, 1, '47170847', 'https://i.ibb.co/chtQLwq/mg.jpg', 'Museum Geologi Bandung', 'Jl. Diponegoro No.57, Cihaur Geulis, Kec. Cibeunying Kaler, Kota Bandung, Jawa Barat 40122', 10000, 'Jawa Barat', 'Kota Bandung', 'Cibeunying Kaler', 'Sejarah', 'Bersejarah', 0, '107.62141238465856', '-6.899757598729122', 0, 0, 0, '2021-07-10 21:23:20', '2021-07-10 21:23:20');
 
 -- --------------------------------------------------------
 
@@ -820,7 +829,7 @@ CREATE TABLE `fiturs` (
 INSERT INTO `fiturs` (`id`, `judul`, `gambar`, `fitur`, `keterangan`, `created_at`, `updated_at`) VALUES
 (2, 'Fitur e-Money', 'https://i.ibb.co/tYSLccp/Logopit-1627010652518.png', 'Fitur e-Money', 'Melakukan pembayaran dengan e-money', '2021-06-29 07:24:09', '2021-06-29 07:24:09'),
 (3, 'Fitur Scan', 'https://i.ibb.co/NxbCSSp/Logopit-1627010578236.png', 'Fitur Scan', 'Scan kode menjadi lebih mudah', '2021-07-16 17:00:00', '2021-07-16 17:00:00'),
-(4, 'Fitur Eklorasi Destinasi', 'https://i.ibb.co/5xtbSB3/Logopit-1627010427330.png', 'Fitur Eklorasi Destinasi', 'Eklorasi destinasi jadi lebih sederhana', '2021-07-22 17:00:00', '2021-07-22 17:00:00');
+(4, 'Fitur Ekplorasi Destinasi', 'https://i.ibb.co/5xtbSB3/Logopit-1627010427330.png', 'Fitur Eklorasi Destinasi', 'Ekplorasi destinasi jadi lebih sederhana', '2021-07-22 17:00:00', '2021-07-22 17:00:00');
 
 -- --------------------------------------------------------
 
@@ -865,36 +874,36 @@ CREATE TABLE `kategoris` (
 --
 
 INSERT INTO `kategoris` (`id`, `kategori_provinsi`, `kategori_kota`, `kategori_kecamatan`, `kategori_kelurahan`, `created_at`, `updated_at`) VALUES
-(1, NULL, NULL, 'Andir', NULL, '2021-06-26 17:00:00', '2021-06-26 17:00:00'),
-(2, NULL, NULL, 'Astana Anyar', NULL, '2021-06-26 17:00:00', '2021-06-26 17:00:00'),
-(3, NULL, NULL, 'Antapani', NULL, '2021-06-26 17:00:00', '2021-06-26 17:00:00'),
-(4, NULL, NULL, 'Arcamanik', NULL, '2021-06-26 17:00:00', '2021-06-26 17:00:00'),
-(5, NULL, NULL, 'Babakan Ciparay', NULL, '2021-06-26 17:00:00', '2021-06-26 17:00:00'),
-(6, NULL, NULL, 'Bandung Kidul', NULL, '2021-06-26 17:00:00', '2021-06-26 17:00:00'),
-(7, NULL, NULL, 'Bandung Kulon', NULL, '2021-06-26 17:00:00', '2021-06-26 17:00:00'),
-(8, NULL, NULL, 'Bandung Wetan', NULL, '2021-06-26 17:00:00', '2021-06-26 17:00:00'),
-(9, NULL, NULL, 'Batununggal', NULL, '2021-06-26 17:00:00', '2021-06-26 17:00:00'),
-(10, NULL, NULL, 'Bojongloa Kaler', NULL, '2021-06-26 17:00:00', '2021-06-26 17:00:00'),
-(11, NULL, NULL, 'Bojongloa Kidul', NULL, '2021-06-26 17:00:00', '2021-06-26 17:00:00'),
-(13, NULL, NULL, 'Buahbatu', NULL, '2021-06-27 19:30:35', '2021-06-27 19:30:35'),
-(14, NULL, NULL, 'Cibeunying Kaler', NULL, '2021-07-10 21:15:45', '2021-07-10 21:15:45'),
-(15, NULL, NULL, 'Cibeunying Kidul', NULL, '2021-07-10 21:15:59', '2021-07-10 21:15:59'),
-(16, NULL, NULL, 'Cibiru', NULL, '2021-07-10 21:16:12', '2021-07-10 21:16:12'),
-(17, NULL, NULL, 'Cicendo', NULL, '2021-07-10 21:16:22', '2021-07-10 21:16:22'),
-(18, NULL, NULL, 'Cidadap', NULL, '2021-07-10 21:16:31', '2021-07-10 21:16:31'),
-(19, NULL, NULL, 'Cinambo', NULL, '2021-07-10 21:16:40', '2021-07-10 21:16:40'),
-(20, NULL, NULL, 'Coblong', NULL, '2021-07-10 21:16:50', '2021-07-10 21:16:50'),
-(21, NULL, NULL, 'Gegebage', NULL, '2021-07-10 21:17:03', '2021-07-10 21:17:03'),
-(22, NULL, NULL, 'Kiara Condong', NULL, '2021-07-10 21:17:13', '2021-07-10 21:17:13'),
-(23, NULL, NULL, 'Lengkong', NULL, '2021-07-10 21:17:22', '2021-07-10 21:17:22'),
-(24, NULL, NULL, 'Mandalajati', NULL, '2021-07-10 21:17:33', '2021-07-10 21:17:33'),
-(25, NULL, NULL, 'Panyileukan', NULL, '2021-07-10 21:17:42', '2021-07-10 21:17:42'),
-(26, NULL, NULL, 'Rancasari', NULL, '2021-07-10 21:17:51', '2021-07-10 21:17:51'),
-(27, NULL, NULL, 'Regol', NULL, '2021-07-10 21:18:02', '2021-07-10 21:18:02'),
-(28, NULL, NULL, 'Sukajadi', NULL, '2021-07-10 21:18:12', '2021-07-10 21:18:12'),
-(29, NULL, NULL, 'Sukasari', NULL, '2021-07-10 21:18:23', '2021-07-10 21:18:23'),
-(30, NULL, NULL, 'Sumur Bandung', NULL, '2021-07-10 21:18:34', '2021-07-10 21:18:34'),
-(31, NULL, NULL, 'Ujung Berung', NULL, '2021-07-10 21:18:43', '2021-07-10 21:18:43');
+(1, NULL, 'Kota Bandung', 'Andir', NULL, '2021-06-26 17:00:00', '2021-06-26 17:00:00'),
+(2, NULL, 'Kota Bandung', 'Astana Anyar', NULL, '2021-06-26 17:00:00', '2021-06-26 17:00:00'),
+(3, NULL, 'Kota Bandung', 'Antapani', NULL, '2021-06-26 17:00:00', '2021-06-26 17:00:00'),
+(4, NULL, 'Kota Bandung', 'Arcamanik', NULL, '2021-06-26 17:00:00', '2021-06-26 17:00:00'),
+(5, NULL, 'Kota Bandung', 'Babakan Ciparay', NULL, '2021-06-26 17:00:00', '2021-06-26 17:00:00'),
+(6, NULL, 'Kota Bandung', 'Bandung Kidul', NULL, '2021-06-26 17:00:00', '2021-06-26 17:00:00'),
+(7, NULL, 'Kota Bandung', 'Bandung Kulon', NULL, '2021-06-26 17:00:00', '2021-06-26 17:00:00'),
+(8, NULL, 'Kota Bandung', 'Bandung Wetan', NULL, '2021-06-26 17:00:00', '2021-06-26 17:00:00'),
+(9, NULL, 'Kota Bandung', 'Batununggal', NULL, '2021-06-26 17:00:00', '2021-06-26 17:00:00'),
+(10, NULL, 'Kota Bandung', 'Bojongloa Kaler', NULL, '2021-06-26 17:00:00', '2021-06-26 17:00:00'),
+(11, NULL, 'Kota Bandung', 'Bojongloa Kidul', NULL, '2021-06-26 17:00:00', '2021-06-26 17:00:00'),
+(13, NULL, 'Kota Bandung', 'Buahbatu', NULL, '2021-06-27 19:30:35', '2021-06-27 19:30:35'),
+(14, NULL, 'Kota Bandung', 'Cibeunying Kaler', NULL, '2021-07-10 21:15:45', '2021-07-10 21:15:45'),
+(15, NULL, 'Kota Bandung', 'Cibeunying Kidul', NULL, '2021-07-10 21:15:59', '2021-07-10 21:15:59'),
+(16, NULL, 'Kota Bandung', 'Cibiru', NULL, '2021-07-10 21:16:12', '2021-07-10 21:16:12'),
+(17, NULL, 'Kota Bandung', 'Cicendo', NULL, '2021-07-10 21:16:22', '2021-07-10 21:16:22'),
+(18, NULL, 'Kota Bandung', 'Cidadap', NULL, '2021-07-10 21:16:31', '2021-07-10 21:16:31'),
+(19, NULL, 'Kota Bandung', 'Cinambo', NULL, '2021-07-10 21:16:40', '2021-07-10 21:16:40'),
+(20, NULL, 'Kota Bandung', 'Coblong', NULL, '2021-07-10 21:16:50', '2021-07-10 21:16:50'),
+(21, NULL, 'Kota Bandung', 'Gegebage', NULL, '2021-07-10 21:17:03', '2021-07-10 21:17:03'),
+(22, NULL, 'Kota Bandung', 'Kiara Condong', NULL, '2021-07-10 21:17:13', '2021-07-10 21:17:13'),
+(23, NULL, 'Kota Bandung', 'Lengkong', NULL, '2021-07-10 21:17:22', '2021-07-10 21:17:22'),
+(24, NULL, 'Kota Bandung', 'Mandalajati', NULL, '2021-07-10 21:17:33', '2021-07-10 21:17:33'),
+(25, NULL, 'Kota Bandung', 'Panyileukan', NULL, '2021-07-10 21:17:42', '2021-07-10 21:17:42'),
+(26, NULL, 'Kota Bandung', 'Rancasari', NULL, '2021-07-10 21:17:51', '2021-07-10 21:17:51'),
+(27, NULL, 'Kota Bandung', 'Regol', NULL, '2021-07-10 21:18:02', '2021-07-10 21:18:02'),
+(28, NULL, 'Kota Bandung', 'Sukajadi', NULL, '2021-07-10 21:18:12', '2021-07-10 21:18:12'),
+(29, NULL, 'Kota Bandung', 'Sukasari', NULL, '2021-07-10 21:18:23', '2021-07-10 21:18:23'),
+(30, NULL, 'Kota Bandung', 'Sumur Bandung', NULL, '2021-07-10 21:18:34', '2021-07-10 21:18:34'),
+(31, NULL, 'Kota Bandung', 'Ujung Berung', NULL, '2021-07-10 21:18:43', '2021-07-10 21:18:43');
 
 -- --------------------------------------------------------
 
@@ -957,7 +966,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (10, '2021_06_28_034752_create_cuacas_table', 4),
 (11, '2021_06_28_035359_create_kartus_table', 4),
 (12, '2021_06_28_051552_create_fiturs_table', 5),
-(13, '2021_07_15_013211_create_laporandestinasis_table', 6);
+(13, '2021_07_15_013211_create_laporandestinasis_table', 6),
+(14, '2021_08_04_063200_create_kategorikotas_table', 7),
+(15, '2021_08_04_232833_create_pesans_table', 8);
 
 -- --------------------------------------------------------
 
@@ -1057,7 +1068,8 @@ INSERT INTO `transaksis` (`id`, `id_user`, `uid`, `id_destinasi`, `status`, `cre
 (115, 3, '27345662', '45170845', 1, '2021-07-23 08:30:45', '2021-07-23 08:30:45', '2021-07-23 08:30:45'),
 (116, 3, '27345662', '45170845', 1, '2021-07-23 08:34:19', '2021-07-23 08:34:19', '2021-07-23 08:34:19'),
 (117, 3, '27345662', '45170845', 1, '2021-07-23 08:38:47', '2021-07-23 08:38:47', '2021-07-23 08:38:47'),
-(118, 3, '27345662', '45170845', 1, '2021-07-23 08:39:43', '2021-07-23 08:39:43', '2021-07-23 08:39:43');
+(118, 3, '27345662', '45170845', 1, '2021-07-23 08:39:43', '2021-07-23 08:39:43', '2021-07-23 08:39:43'),
+(119, 3, '27345662', '45170845', 2, '2021-08-05 08:46:06', '2021-08-05 01:46:06', '2021-08-05 02:19:05');
 
 -- --------------------------------------------------------
 
@@ -1095,7 +1107,7 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `name`, `username`, `foto`, `uid`, `email`, `email_verified_at`, `password`, `tempat_lahir`, `tanggal_lahir`, `alamat`, `nohp`, `saldo`, `status`, `latitude_user`, `longitude_user`, `level`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'Muhammad Ikhwan Fathulloh', 'Ikhwan', 'https://i.ibb.co/vXgH8Wr/Logopit-1619837910132.jpg', NULL, 'muhammadikhwanfathulloh17@gmail.com', NULL, '$2y$10$nxKWZiAB4kgONpLkWOLM1eCBikF9TADeZfEYth34xlqCa4PLY4S0u', 'Jakarta', '2000-06-17', 'Bandung ', '+6285861712279', 0, 0, '0', '0', 1, NULL, '2021-06-26 19:59:03', '2021-06-26 20:32:19'),
 (2, 'Shalih Rizaldy', 'Shalih', 'https://i.ibb.co/nczf7mW/Logopit-1626925559368.jpg', NULL, 'shalihrizaldy@gmail.com', NULL, '$2y$10$yJCkTtSyjNhMkj1aUhTuauapv/n51M9wf1aBzNpwDw9xenD3JCLki', 'Pangandaran', NULL, NULL, NULL, 0, 0, NULL, NULL, 2, NULL, '2021-06-29 22:32:43', '2021-06-29 22:34:08'),
-(3, 'Dimas Aji Permadi', 'Dimas', 'https://i.ibb.co/CQr7t6n/Logopit-1626925514205.jpg', '27345662', 'dajip569@gmail.com', NULL, '$2y$10$7lxuS.7YV6S0MRyoZUxj/.KMcUbP53aa5EJG/j4n/bv/XnqRUbXFi', 'Bandung', NULL, 'Bandung ', NULL, 70000, 0, NULL, NULL, 3, NULL, '2021-06-29 23:14:27', '2021-07-17 06:44:33'),
+(3, 'Dimas Aji Permadi', 'Dimas', 'https://i.ibb.co/CQr7t6n/Logopit-1626925514205.jpg', '27345662', 'dajip569@gmail.com', NULL, '$2y$10$7lxuS.7YV6S0MRyoZUxj/.KMcUbP53aa5EJG/j4n/bv/XnqRUbXFi', 'Bandung', NULL, 'Bandung ', NULL, 55000, 0, NULL, NULL, 3, NULL, '2021-06-29 23:14:27', '2021-08-05 01:46:06'),
 (4, 'Muhammad Ikhwan Fathulloh', 'Ikhwan', 'https://i.ibb.co/vXgH8Wr/Logopit-1619837910132.jpg', '17BA6162', 'ikhwancreator17@gmail.com', NULL, '$2y$10$IxwEMODgKVEWF7bzYVXd2uXglX5n7hKAxAxAjIMql6ctR1TA7pg2K', 'Jakarta', '2001-06-17', 'Bandung ', '+6285861712279', 10000, 0, NULL, NULL, 3, NULL, '2021-07-11 23:21:47', '2021-07-11 23:24:23'),
 (5, 'Dimas Aji Permadi', 'Dimas', 'https://i.ibb.co/CQr7t6n/Logopit-1626925514205.jpg', NULL, 'dimasajipermadi@gmail.com', NULL, '$2y$10$OtPYDD4lSSH8m1Khjf77PeWJjpWcb1ZWkwc/5V94p9o.g20yKxiBW', NULL, NULL, NULL, NULL, 0, 0, NULL, NULL, 2, NULL, '2021-07-15 01:13:40', '2021-07-15 01:16:41'),
 (7, 'Farah Nurul Aini', 'Farah', NULL, NULL, 'farah@gmail.com', NULL, '$2y$10$b7TFZIAT0K80f/nxPZf74uXWsX5QMbV3DreAE8t6omcttFsqklg0.', NULL, NULL, NULL, NULL, 0, 0, NULL, NULL, 3, NULL, '2021-07-21 10:44:18', '2021-07-21 10:44:18');
@@ -1235,7 +1247,7 @@ ALTER TABLE `alats`
 -- AUTO_INCREMENT for table `cuacas`
 --
 ALTER TABLE `cuacas`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=740;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=749;
 
 --
 -- AUTO_INCREMENT for table `destinasis`
@@ -1277,7 +1289,7 @@ ALTER TABLE `laporandestinasis`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `pesertas`
@@ -1289,7 +1301,7 @@ ALTER TABLE `pesertas`
 -- AUTO_INCREMENT for table `transaksis`
 --
 ALTER TABLE `transaksis`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=121;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=120;
 
 --
 -- AUTO_INCREMENT for table `users`

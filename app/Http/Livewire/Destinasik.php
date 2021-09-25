@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Models\Destinasi;
 use App\Models\Kategori;
+use App\Models\Kategorikota;
 use Livewire\WithPagination;
 use Auth;
 
@@ -19,6 +20,7 @@ class Destinasik extends Component
 	public $alamat_destinasi;
 	public $harga_destinasi;
 	public $kategori_kecamatan;
+    public $kategori_wisata;
 	public $keterangan_destinasi;
 	public $latitude_destinasi;
 	public $longitude_destinasi;
@@ -39,7 +41,8 @@ class Destinasik extends Component
         $this->nama_destinasi = '';
         $this->alamat_destinasi = '';
         $this->harga_destinasi = '';
-        $this->kategori_kecamatan = 'Kategori Destinasi';
+        $this->kategori_kecamatan = 'Kategori Kecamatan';
+        $this->kategori_wisata = 'Kategori Wisata';
         $this->keterangan_destinasi = '';
         $this->latitude_destinasi = '';
         $this->longitude_destinasi = '';
@@ -53,6 +56,7 @@ class Destinasik extends Component
             'alamat_destinasi' => 'required',
             'harga_destinasi' => 'required',
             'kategori_kecamatan' => 'required',
+            'kategori_wisata' => 'required',
             'keterangan_destinasi' => 'required',
             'latitude_destinasi' => 'required',
             'longitude_destinasi' => 'required',
@@ -63,6 +67,7 @@ class Destinasik extends Component
             'alamat_destinasi.required' => 'Wajib diisi !!',
             'harga_destinasi.required' => 'Wajib diisi !!',
             'kategori_kecamatan.required' => 'Wajib diisi !!',
+            'kategori_wisata.required' => 'Wajib diisi !!',
             'keterangan_destinasi.required' => 'Wajib diisi !!',
             'latitude_destinasi.required' => 'Wajib diisi !!',
             'longitude_destinasi.required' => 'Wajib diisi !!',
@@ -76,6 +81,7 @@ class Destinasik extends Component
             'alamat_destinasi' => $this->alamat_destinasi,
             'harga_destinasi' => $this->harga_destinasi,
             'kategori_kecamatan' => $this->kategori_kecamatan,
+            'kategori_wisata' => $this->kategori_wisata,
             'keterangan_destinasi' => $this->keterangan_destinasi,
             'latitude_destinasi' => $this->latitude_destinasi,
             'longitude_destinasi' => $this->longitude_destinasi,
@@ -93,6 +99,7 @@ class Destinasik extends Component
 		$this->alamat_destinasi = $destinasik->alamat_destinasi;
 		$this->harga_destinasi = $destinasik->harga_destinasi;
 		$this->kategori_kecamatan = $destinasik->kategori_kecamatan;
+        $this->kategori_wisata = $destinasik->kategori_wisata;
 		$this->keterangan_destinasi = $destinasik->keterangan_destinasi;
 		$this->latitude_destinasi = $destinasik->latitude_destinasi;
 		$this->longitude_destinasi = $destinasik->longitude_destinasi;
@@ -106,6 +113,7 @@ class Destinasik extends Component
             'alamat_destinasi' => 'required',
             'harga_destinasi' => 'required',
             'kategori_kecamatan' => 'required',
+            'kategori_wisata' => 'required',
             'keterangan_destinasi' => 'required',
             'latitude_destinasi' => 'required',
             'longitude_destinasi' => 'required',
@@ -116,6 +124,7 @@ class Destinasik extends Component
             'alamat_destinasi.required' => 'Wajib diisi !!',
             'harga_destinasi.required' => 'Wajib diisi !!',
             'kategori_kecamatan.required' => 'Wajib diisi !!',
+            'kategori_wisata.required' => 'Wajib diisi !!',
             'keterangan_destinasi.required' => 'Wajib diisi !!',
             'latitude_destinasi.required' => 'Wajib diisi !!',
             'longitude_destinasi.required' => 'Wajib diisi !!',
@@ -129,6 +138,7 @@ class Destinasik extends Component
             'alamat_destinasi' => $this->alamat_destinasi,
             'harga_destinasi' => $this->harga_destinasi,
             'kategori_kecamatan' => $this->kategori_kecamatan,
+            'kategori_wisata' => $this->kategori_wisata,
             'keterangan_destinasi' => $this->keterangan_destinasi,
             'latitude_destinasi' => $this->latitude_destinasi,
             'longitude_destinasi' => $this->longitude_destinasi,
@@ -163,16 +173,19 @@ class Destinasik extends Component
             return view('livewire.destinasik', [
             'destinasi' => Destinasi::where('kategori_kecamatan', 'like', '%'.$this->search.'%')->orderBy('id','DESC')->paginate(5),
             'kategori' => Kategori::get(),
+            'kategoriwisata' => Kategorikota::get(),
             ])->layout('destinasi.v_destinasik');
         }else if (Auth::user()->level==2) {
             return view('livewire.destinasik', [
             'destinasi' => Destinasi::where('id_user', Auth::user()->id)->where('kategori_kecamatan', 'like', '%'.$this->search.'%')->orderBy('id','DESC')->paginate(5),
             'kategori' => Kategori::get(),
+            'kategoriwisata' => Kategorikota::get(),
             ])->layout('destinasi.v_destinasik');
         }
         return view('livewire.destinasik', [
         	'destinasi' => Destinasi::where('id_user', Auth::user()->id)->get(),
         	'kategori' => Kategori::get(),
+            'kategoriwisata' => Kategorikota::get(),
         ])->layout('destinasi.v_destinasik');
     }
 }

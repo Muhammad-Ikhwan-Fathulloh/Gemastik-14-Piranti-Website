@@ -61,6 +61,10 @@ class User extends Authenticatable
         return DB::table('users')->where('uid', $uid)->get();
     }
 
+    public function emaildata($email){
+        return DB::table('users')->where('email', $email)->get();
+    }
+
     public function detailData($id){
         return DB::table('users')->where('id', $id)->first();
     }

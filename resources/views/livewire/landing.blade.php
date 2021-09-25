@@ -8,10 +8,13 @@
 <hr>
 <div>
       <form class="d-flex" wire:poll>
-          <input wire:model="search" class="form-control me-2 border-light" type="text" name="search" placeholder="Cari Kategori Kecamatan" aria-label="Search" value="">
+          <input wire:model="search" class="form-control me-2 border-light" type="text" name="search" placeholder="Cari Kategori Kecamatan atau Kategori Wisata" aria-label="Search" value="">
           <span class="btn btn-outline-light" value="cari"><i class="fas fa-fw fa-search"></i></span>
         </form>
     </div>
+    <!--  -->
+    
+    <!--  -->
     <br>
 <div class="row row-cols-1 row-cols-md-3 g-4" wire:poll>
 @foreach ($destinasi as $datas)
@@ -48,7 +51,7 @@
         <hr class="text-white">
         <div class="text-white">
        	<tr>
-	      <th>{{ $datas->keterangan_destinasi }}</th>
+	      <th>{{ $datas->kategori_wisata }}</th>
         </tr>
         @if(!empty(Auth::user()->id))
         <hr class="text-white">
@@ -95,6 +98,26 @@
     <div class="row">
       <div class="col">
         <img src="{{ $datas->gambar_destinasi }}" width="150px">
+        <hr>
+        <h6 class="card-title text-white"><strong>Perkiraan </strong><i class="fas fa-fw fa-cloud"></i></h6>
+        <label class="text-white" for=""><strong>Suhu :</strong> {{ $datas->suhu }} <strong>°C</strong></label>
+        <br>
+        <label class="text-white" for=""><strong>Kelembapan :</strong> {{ $datas->kelembapan }} <strong>%</strong></label>
+        @if($datas->suhu <= 5)
+        <label class="text-white" for=""><strong>Iklim :</strong> Sangat Dingin</label>
+        @elseif($datas->suhu <= 12)
+        <label class="text-white" for=""><strong>Iklim :</strong> Sangat Dingin</label>
+        @elseif($datas->suhu <= 21)
+        <label class="text-white" for=""><strong>Iklim :</strong> Dingin</label>
+        @elseif($datas->suhu <= 26)
+        <label class="text-white" for=""><strong>Iklim :</strong> Hangat</label>
+        @elseif($datas->suhu <= 31)
+        <label class="text-white" for=""><strong>Iklim :</strong> Sangat Hangat</label>
+        @elseif($datas->suhu <= 36)
+        <label class="text-white" for=""><strong>Iklim :</strong> Panas</label>
+        @else
+        <label class="text-white" for=""><strong>Iklim :</strong> Panas</label>
+        @endif
       </div>
       <div class="col">
         <label class="text-white" for=""><strong>Harga :</strong> Rp.{{ number_format($datas->harga_destinasi) }},-</label>
@@ -116,32 +139,46 @@
   <div class="form-group">
     <div class="row">
       <div class="col">
-        <h6 class="card-title text-white"><strong>Perkiraan </strong><i class="fas fa-fw fa-cloud"></i></h6>
-        <label class="text-white" for=""><strong>Suhu :</strong> {{ $datas->suhu }} <strong>°C</strong></label>
-        <br>
-        <label class="text-white" for=""><strong>Kelembapan :</strong> {{ $datas->kelembapan }} <strong>%</strong></label>
-        @if($datas->suhu <= 5)
-        <label class="text-white" for=""><strong>Iklim :</strong> Sangat Dingin</label>
-        @elseif($datas->suhu <= 12)
-        <label class="text-white" for=""><strong>Iklim :</strong> Sangat Dingin</label>
-        @elseif($datas->suhu <= 21)
-        <label class="text-white" for=""><strong>Iklim :</strong> Dingin</label>
-        @elseif($datas->suhu <= 26)
-        <label class="text-white" for=""><strong>Iklim :</strong> Hangat</label>
-        @elseif($datas->suhu <= 31)
-        <label class="text-white" for=""><strong>Iklim :</strong> Sangat Hangat</label>
-        @elseif($datas->suhu <= 36)
-        <label class="text-white" for=""><strong>Iklim :</strong> Panas</label>
-        @else
-        <label class="text-white" for=""><strong>Iklim :</strong> Panas</label>
-        @endif
-        
-      </div>
-      <div class="col">
-        
+        <p>
+          <a class="btn btn-primary" data-toggle="collapse" href="#deskripsi{{ $datas->id }}" role="button" aria-expanded="false" aria-controls="deskripsi{{ $datas->id }}"><i class="fas fa-fw fa-eye"></i> <strong> Deskripsi Destinasi</strong></a>
+        </p>
+        <div class="row">
+          <div class="col">
+            <div class="collapse multi-collapse" id="deskripsi{{ $datas->id }}" wire:ignore.self>
+              <p class="text-white">{{ $datas->keterangan_destinasi }}</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div> 
+
+  <div class="form-group">
+    <div class="row">
+      <div class="col">
+        <p>
+          <a class="btn btn-primary" data-toggle="collapse" href="#pesan{{ $datas->id }}" role="button" aria-expanded="false" aria-controls="pesan{{ $datas->id }}"><i class="fas fa-fw fa-comments"></i> <strong> Forum Chat</strong></a>
+        </p>
+        <div class="row">
+          <div class="col">
+            <div class="collapse multi-collapse" id="pesan{{ $datas->id }}" wire:ignore.self>
+              <div class="card card-body">
+                <div class="form-group">
+                  <textarea type="text" name="pesan" wire:model="pesan" class="form-control" placeholder="Masukkan Pesan" rows="3"></textarea>
+                  @error('pesan') <div class="alert alert-danger">{{ $message }}</div> @enderror
+                </div>
+                <div class="form-group">
+                  <textarea type="text" name="file" wire:model="file" class="form-control" placeholder="Masukkan Link File" rows="1"></textarea>
+                  @error('file') <div class="alert alert-danger">{{ $message }}</div> @enderror
+                </div>
+                <button class="btn btn-sm btn-success" data-toggle="modal" data-target="#" wire:click.prevent="SimpanDatak({{ $datas->id }})"><i class="fas fa-fw fa-comments"></i> <strong>Kirim</strong></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>  
         <!-- Form -->
       </div>
       <div class="modal-footer">

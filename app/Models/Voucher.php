@@ -16,6 +16,10 @@ class Voucher extends Model
         'status',
     ];
 
+    public function allData(){
+        return DB::table('vouchers')->get();
+    }
+
     public function detailData($id_voucher){
     	return DB::table('vouchers')->where('id_voucher', $id_voucher)->first();
     }

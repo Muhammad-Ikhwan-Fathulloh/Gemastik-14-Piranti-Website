@@ -31,6 +31,10 @@ class Laporandestinasi extends Model
         return DB::table('laporandestinasis')->where('id_destinasi', $id_destinasi)->where('tanggal', $tanggal)->first();
     }
 
+    public function detailDatas($id_destinasi){
+        return DB::table('laporandestinasis')->where('id_destinasi', $id_destinasi)->first();
+    }
+
     public function addDatak($data_kunjungan){
     	DB::table('laporandestinasis')->insert($data_kunjungan);
     }

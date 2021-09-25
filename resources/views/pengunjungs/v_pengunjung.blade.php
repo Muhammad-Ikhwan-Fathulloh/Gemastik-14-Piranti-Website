@@ -1,7 +1,7 @@
 @extends('layout.v_template')
 
-@section('title','Data Kunjungan')
-@section('halaman','Data Kunjungan')
+@section('title','Data Pengunjung')
+@section('halaman','Data Pengunjung')
 
 @section('content')
 @livewire('pengunjung')

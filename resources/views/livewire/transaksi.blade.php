@@ -209,19 +209,32 @@
 <hr>
 @foreach ($transaksik as $datas)
 	<div class="card" wire:poll>
+		@foreach ($destinasik as $datak)
+		@if($datak->id_destinasi == $datas->id_destinasi)
   <div class="card-header">
-    Destinasi {{ $datas->nama_destinasi }}
+    <h5><strong>Destinasi {{ $datak->nama_destinasi }}</strong></h5>
+    <p align="right"><strong>Kode {{ $datas->id }}</strong></p>
   </div>
   <div class="card-body">
   	<div class="row row-cols-1 row-cols-md-2 g-4">
   		<div class="col">
-  			<img height="100px" src="{{ $datas->gambar_destinasi }}">
+  			<img height="100px" src="{{ $datak->gambar_destinasi }}">
   		</div>
   		<div class="col">
-  			<p><strong>Destinasi :</strong> {{ $datas->nama_destinasi }}</p>
-  			<p><strong>Alamat :</strong> {{ $datas->alamat_destinasi }}</p>
-        	<p><strong>Kecamatan :</strong> {{ $datas->kategori_kecamatan }}</p>
+  			<p><strong>Destinasi :</strong> {{ $datak->nama_destinasi }}</p>
+  			<p><strong>Alamat :</strong> {{ $datak->alamat_destinasi }}</p>
+        	<p><strong>Kecamatan :</strong> {{ $datak->kategori_kecamatan }}</p>
         <hr class="text-white">
+        @endif
+  		@endforeach
+  		</div>
+  		
+  	</div>
+  </div>
+  <div class="card-footer">
+  	<div class="row">
+  		<div class="col">
+  			Skut Bandung
   		</div>
   		<div class="col" align="right">
     
@@ -240,16 +253,6 @@
 		                    @endif
 		     
 		     <br>
-  		</div>
-  	</div>
-  </div>
-  <div class="card-footer">
-  	<div class="row">
-  		<div class="col">
-  			Skut Bandung
-  		</div>
-  		<div class="col" align="right">
-  			Tanggal Transaksi : {{ $datas->created_att }}
   		</div>
   	</div>
   </div>
