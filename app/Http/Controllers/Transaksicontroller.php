@@ -34,6 +34,14 @@ class Transaksicontroller extends Controller
     	return response()->json($data);
     }
 
+    public function indexStatus1($id, Request $request){
+    	$data = [
+    		'transaksi' => $this->Transaksi->DataSuccessId($id),
+    	];
+
+    	return response()->json($data);
+    }
+
     public function update($id, Request $request){
         date_default_timezone_set('Asia/Jakarta');
         $transaksik = $this->Transaksi->detailData($id);

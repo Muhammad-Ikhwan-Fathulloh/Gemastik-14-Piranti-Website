@@ -33,4 +33,13 @@ class Topup extends Controller
         }
     	
     }
+
+    public function UpdateSaldoMobile($id_voucher, $id_user, Request $request){
+		$Vouchers = $this->$id_voucher->detailData($request->uids);
+            $data = [
+                'saldo' => $id_user->saldo + $id_voucher->nominal,
+            ];
+            $this->User->editData($id_user, $data);
+            $this->Voucher->deleteData($Vouchers->id);
+    }
 }

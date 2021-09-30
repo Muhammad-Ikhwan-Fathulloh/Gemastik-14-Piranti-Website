@@ -40,6 +40,7 @@ Route::delete('/user/{id}',[Usercontroller::class, 'delete']);
 //-------------------------------------------------------------------------
 Route::get('/transaksi',[Transaksicontroller::class, 'index']);
 Route::get('/transaksi/{uid}',[Transaksicontroller::class, 'indexs']);
+Route::get('/transaksiid/{id}',[Transaksicontroller::class, 'indexStatus1']);
 Route::post('/transaksi',[Transaksicontroller::class, 'insert']);
 Route::put('/transaksi/{id}',[Transaksicontroller::class, 'update']);
 Route::delete('/transaksi/{id}',[Transaksicontroller::class, 'delete']);
@@ -61,6 +62,8 @@ Route::post('/cuaca',[Cuacacontroller::class, 'insert']);
 
 //-------------------------------------------------------------------------
 Route::put('/topup',[Topup::class, 'UbahSaldo']);
+Route::put('/topup/{id_voucher}/id/{id_user}',[Topup::class, 'UpdateSaldoMobile']);
+
 //-------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------

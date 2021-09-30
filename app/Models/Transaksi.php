@@ -27,6 +27,10 @@ class Transaksi extends Model
         return DB::table('transaksis')->where('status', 0)->where('uid', $uid)->get();
     }
 
+    public function DataSuccessId($id){
+        return DB::table('transaksis')->where('status', 1)->where('id_user', $id)->get();
+    }
+
     public function detailData($id){
     	return DB::table('transaksis')->where('id', $id)->first();
     }
