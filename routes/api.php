@@ -62,7 +62,7 @@ Route::post('/cuaca',[Cuacacontroller::class, 'insert']);
 
 //-------------------------------------------------------------------------
 Route::put('/topup',[Topup::class, 'UbahSaldo']);
-Route::put('/topup/{id_voucher}/id/{id_user}',[Topup::class, 'UpdateSaldoMobile']);
+Route::put('/topups/{idvoucher}/{iduser}',[Topup::class, 'UpdateSaldoMobile']);
 
 //-------------------------------------------------------------------------
 

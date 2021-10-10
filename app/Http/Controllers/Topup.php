@@ -34,12 +34,21 @@ class Topup extends Controller
     	
     }
 
-    public function UpdateSaldoMobile($id_voucher, $id_user, Request $request){
-		$Vouchers = $this->$id_voucher->detailData($request->uids);
+    public function UpdateSaldoMobile(Request $request, $idvoucher, $iduser){
+		$Vouchers = $this->Voucher->detailData($idvoucher);
+        $user = $this->User->detailData($iduser);
+        if (!empty($Vouchers->id_voucher)) {
             $data = [
-                'saldo' => $id_user->saldo + $id_voucher->nominal,
+                'saldo' => $user->saldo + $Vouchers->nominal,
             ];
-            $this->User->editData($id_user, $data);
+
+            $this->User->editData($user->id, $data);
             $this->Voucher->deleteData($Vouchers->id);
+            alert()->success('Berhasil','Menambahkan Saldo');
+            return redirect()->route('topup');
+        }else{
+            alert()->error('Gagal','Masukkan Kode Voucher');
+            return redirect()->route('topup');
+        }
     }
 }
